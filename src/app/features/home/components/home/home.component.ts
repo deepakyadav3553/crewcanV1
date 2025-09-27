@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
-import { ThemeService } from '../../services/theme.service';
+import { AuthService } from '../../../auth/services/auth.service';
+import { ThemeService } from '../../../../services/theme.service';
 
 @Component({
   selector: 'app-home',

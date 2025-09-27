@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { MaterialModule } from '../../material.module';
-import { LanguageService } from '../../services/language.service';
+import { MaterialModule } from '../../../../material.module';
+import { LanguageService } from '../../../../services/language.service';
 import { AuthService } from '../../services/auth.service';
-import { BubbleBackgroundComponent } from '../../shared/components';
+import { BubbleBackgroundComponent } from '../../../../shared/components';
 
 @Component({
   selector: 'app-login',

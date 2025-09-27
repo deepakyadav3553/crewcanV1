@@ -1,10 +1,4 @@
 import { Routes } from '@angular/router';
-import { WelcomeComponent } from './components/welcome/welcome.component';
-import { LoginComponent } from './components/login/login.component';
-import { OtpVerificationComponent } from './components/otp-verification/otp-verification.component';
-import { HomeComponent } from './components/home/home.component';
-import { AuthGuard } from './guards/auth.guard';
-import { GuestGuard } from './guards/guest.guard';
 
 export const routes: Routes = [
   {
@@ -14,23 +8,19 @@ export const routes: Routes = [
   },
   {
     path: 'welcome',
-    component: WelcomeComponent,
-    canActivate: [GuestGuard]
+    loadComponent: () => import('./features/auth/components/welcome/welcome.component').then(m => m.WelcomeComponent)
   },
   {
     path: 'login',
-    component: LoginComponent,
-    canActivate: [GuestGuard]
+    loadComponent: () => import('./features/auth/components/login/login.component').then(m => m.LoginComponent)
   },
   {
     path: 'otp-verification',
-    component: OtpVerificationComponent,
-    canActivate: [GuestGuard]
+    loadComponent: () => import('./features/auth/components/otp-verification/otp-verification.component').then(m => m.OtpVerificationComponent)
   },
   {
     path: 'home',
-    component: HomeComponent,
-    canActivate: [AuthGuard]
+    loadComponent: () => import('./features/home/components/home/home.component').then(m => m.HomeComponent)
   },
   {
     path: '**',

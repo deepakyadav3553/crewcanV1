@@ -2,7 +2,6 @@ import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ThemeService } from './services/theme.service';
 import { LanguageService } from './services/language.service';
-import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
