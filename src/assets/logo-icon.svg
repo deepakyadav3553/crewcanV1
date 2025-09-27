@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <!-- Multi-stop gradient for depth -->
+    <linearGradient id="gradIcon" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="50%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Enhanced Abstract C centered -->
+  <path d="M60 60c0-25 20-45 45-45 14 0 26 6 35 15l-11 11c-6-6-14-10-24-10-17.5 0-32 14.5-32 32s14.5 32 32 32c10 0 18-4 24-10l11 11c-9 9-21 15-35 15-25 0-45-20-45-45z"
+        fill="url(#gradIcon)"/>
+</svg>

@@ -9,7 +9,11 @@
       "WebSearch",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:capawesome.io)",
-      "Bash(ng add:*)"
+      "Bash(ng add:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm run serve:*)",
+      "Bash(ng serve:*)",
+      "Bash(rm:*)"
     ],
     "deny": [],
     "ask": []
