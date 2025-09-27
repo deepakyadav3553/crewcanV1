@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MaterialModule } from '../../../../material.module';
 import { LanguageService, Language } from '../../../../services/language.service';
-import { BubbleBackgroundComponent } from '../../../../shared/components';
+import { BubbleBackgroundComponent } from '../../../../shared/components/bubble-background/bubble-background.component';
 
 @Component({
   selector: 'app-welcome',

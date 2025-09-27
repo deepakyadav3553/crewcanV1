@@ -6,7 +6,7 @@ import { Location } from '@angular/common';
 import { MaterialModule } from '../../../../material.module';
 import { LanguageService } from '../../../../services/language.service';
 import { AuthService } from '../../services/auth.service';
-import { BubbleBackgroundComponent } from '../../../../shared/components';
+import { BubbleBackgroundComponent } from '../../../../shared/components/bubble-background/bubble-background.component';
 
 @Component({
   selector: 'app-login',

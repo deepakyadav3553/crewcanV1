@@ -4,7 +4,7 @@
 
   <!-- Top Row: Location & Profile -->
   <div class="header-top-row">
-    <!-- Left: Location -->
+    <!-- Left: Location with Enhanced Menu -->
     <div class="header-left">
       @if (showLocationPicker) {
         <div class="location-section" (click)="onLocationClick()">
@@ -13,29 +13,104 @@
           </div>
           <div class="location-info">
             <span class="location-name">{{ userLocation }}</span>
-            <span class="location-label">Tap to change</span>
+            <span class="location-label">{{ getLocationLabel() }}</span>
           </div>
+          <mat-icon class="dropdown-icon">keyboard_arrow_down</mat-icon>
+
+          <!-- Location Dropdown Menu -->
+          @if (showLocationMenu()) {
+            <div class="location-menu" (click)="$event.stopPropagation()">
+              <div class="location-menu-header">
+                <mat-icon>location_on</mat-icon>
+                <span>{{ languageService.translate('location.select') }}</span>
+              </div>
+
+              <!-- Current Location -->
+              <div class="location-menu-item current-location" (click)="onCurrentLocationClick()">
+                <mat-icon>my_location</mat-icon>
+                <span>{{ languageService.translate('location.current') }}</span>
+              </div>
+
+              <mat-divider></mat-divider>
+
+              <!-- Popular Locations -->
+              <div class="location-menu-section">
+                <div class="section-title">{{ languageService.translate('location.recent') }}</div>
+                @for (location of languageService.getPopularLocations(); track location.id) {
+                  <div class="location-menu-item" (click)="onLocationSelect(location)">
+                    <mat-icon>place</mat-icon>
+                    <span>{{ languageService.getLocationName(location) }}</span>
+                  </div>
+                }
+              </div>
+            </div>
+          }
         </div>
       }
     </div>
 
-    <!-- Right: Notifications & Profile -->
+    <!-- Right: Language, Notifications & Profile -->
     @if (showProfile) {
       <div class="header-right">
+        <!-- Language Selector -->
+        <button
+          class="language-button"
+          (click)="onLanguageMenuClick()">
+          <span class="language-flag">{{ languageService.getCurrentLanguage()().flag }}</span>
+
+          <!-- Language Dropdown Menu -->
+          @if (showLanguageMenu()) {
+            <div class="language-menu" (click)="$event.stopPropagation()">
+              <div class="language-menu-header">
+                <mat-icon>translate</mat-icon>
+                <span>{{ languageService.translate('language.change') }}</span>
+              </div>
+              @for (language of languageService.getAvailableLanguages(); track language.code) {
+                <div class="language-menu-item"
+                     (click)="onLanguageSelect(language)"
+                     [class.active]="languageService.getCurrentLanguage()().code === language.code">
+                  <span class="language-flag">{{ language.flag }}</span>
+                  <div class="language-info">
+                    <span class="language-name">{{ language.name }}</span>
+                    <span class="language-native">{{ language.nativeName }}</span>
+                  </div>
+                  @if (languageService.getCurrentLanguage()().code === language.code) {
+                    <mat-icon class="check-icon">check</mat-icon>
+                  }
+                </div>
+              }
+            </div>
+          }
+        </button>
+
+        <!-- Notifications -->
         <button
           class="notification-button"
-          (click)="onNotificationClick()"
-          mat-icon-button
-          [matBadge]="notificationCount > 0 ? notificationCount : null"
-          matBadgeColor="warn"
-          matBadgeSize="small">
+          (click)="onNotificationMenuClick()"
+          [attr.data-badge]="notificationCount > 0 ? notificationCount : null">
           <mat-icon>notifications_none</mat-icon>
+          @if (notificationCount > 0) {
+            <span class="notification-badge">{{ notificationCount }}</span>
+          }
+
+          <!-- Notification Dropdown Menu -->
+          @if (showNotificationMenu()) {
+            <div class="notification-menu" (click)="$event.stopPropagation()">
+              <div class="notification-header">
+                <mat-icon>notifications</mat-icon>
+                <span>{{ languageService.translate('notifications.title') }}</span>
+              </div>
+              <div class="no-notifications">
+                <mat-icon>notifications_off</mat-icon>
+                <span>No new notifications</span>
+              </div>
+            </div>
+          }
         </button>
 
         <button
           class="profile-button"
-          [matMenuTriggerFor]="profileMenu"
-          mat-icon-button>
+          (click)="onProfileMenuClick()">
           @if (userAvatar) {
             <img [src]="userAvatar" [alt]="userName" class="profile-avatar" />
           } @else {
@@ -43,54 +118,55 @@
               {{ getInitials(userName) }}
             </div>
           }
-        </button>
 
-        <!-- Profile Menu -->
-        <mat-menu #profileMenu="matMenu" class="profile-menu">
-          <div class="profile-header">
-            <div class="profile-avatar-large">
-              @if (userAvatar) {
-                <img [src]="userAvatar" [alt]="userName" />
-              } @else {
-                {{ getInitials(userName) }}
-              }
+          <!-- Profile Dropdown Menu -->
+          @if (showProfileMenu()) {
+            <div class="profile-menu" (click)="$event.stopPropagation()">
+              <div class="profile-header">
+                <div class="profile-avatar-large">
+                  @if (userAvatar) {
+                    <img [src]="userAvatar" [alt]="userName" />
+                  } @else {
+                    {{ getInitials(userName) }}
+                  }
+                </div>
+                <div class="profile-details">
+                  <span class="profile-name">{{ userName }}</span>
+                  <span class="profile-subtitle">View Profile</span>
+                </div>
+              </div>
+              <div class="profile-menu-item" (click)="onProfileClick()">
+                <mat-icon>person</mat-icon>
+                <span>My Profile</span>
+              </div>
+              <div class="profile-menu-item">
+                <mat-icon>favorite</mat-icon>
+                <span>Favorites</span>
+              </div>
+              <div class="profile-menu-item">
+                <mat-icon>history</mat-icon>
+                <span>Order History</span>
+              </div>
+              <div class="profile-menu-item">
+                <mat-icon>payment</mat-icon>
+                <span>Payment Methods</span>
+              </div>
+              <div class="profile-menu-divider"></div>
+              <div class="profile-menu-item">
+                <mat-icon>settings</mat-icon>
+                <span>Settings</span>
+              </div>
+              <div class="profile-menu-item">
+                <mat-icon>help</mat-icon>
+                <span>Help & Support</span>
+              </div>
+              <div class="profile-menu-item">
+                <mat-icon>logout</mat-icon>
+                <span>Sign Out</span>
+              </div>
             </div>
-            <div class="profile-details">
-              <span class="profile-name">{{ userName }}</span>
-              <span class="profile-subtitle">View Profile</span>
-            </div>
-          </div>
-          <mat-divider></mat-divider>
-          <button mat-menu-item (click)="onProfileClick()">
-            <mat-icon>person</mat-icon>
-            <span>My Profile</span>
-          </button>
-          <button mat-menu-item>
-            <mat-icon>favorite</mat-icon>
-            <span>Favorites</span>
-          </button>
-          <button mat-menu-item>
-            <mat-icon>history</mat-icon>
-            <span>Order History</span>
-          </button>
-          <button mat-menu-item>
-            <mat-icon>payment</mat-icon>
-            <span>Payment Methods</span>
-          </button>
-          <mat-divider></mat-divider>
-          <button mat-menu-item>
-            <mat-icon>settings</mat-icon>
-            <span>Settings</span>
-          </button>
-          <button mat-menu-item>
-            <mat-icon>help</mat-icon>
-            <span>Help & Support</span>
-          </button>
-          <button mat-menu-item>
-            <mat-icon>logout</mat-icon>
-            <span>Sign Out</span>
-          </button>
-        </mat-menu>
+          }
+        </button>
       </div>
     }
   </div>
@@ -98,12 +174,12 @@
   <!-- Bottom Row: Search Bar -->
   @if (showSearch) {
     <div class="header-search-row">
-      <div class="search-container" [class.focused]="isSearchFocused()">
+      <div class="search-container" [class.focused]="isSearchFocused()" (click)="closeAllDropdowns()">
         <mat-icon class="search-icon">search</mat-icon>
         <input
           type="text"
           class="search-input"
-          placeholder="What are you craving today?"
+          [placeholder]="getSearchPlaceholder()"
           [value]="searchText()"
           (input)="onSearchInput($event)"
           (focus)="onSearchFocus()"
