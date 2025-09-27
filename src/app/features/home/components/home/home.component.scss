@@ -6,6 +6,7 @@
   transition: background 0.3s ease, color 0.3s ease;
   display: flex;
   flex-direction: column;
+  padding-top: 150px; /* Space for fixed header */
   padding-bottom: 80px; /* Space for bottom navigation */
   position: relative;
   overflow: hidden;
