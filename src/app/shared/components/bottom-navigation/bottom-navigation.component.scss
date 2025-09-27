@@ -1,247 +1,270 @@
-/* Modern Bottom Navigation - Instagram Style */
+/* Ultra-Modern Bottom Navigation 2024 */
 .bottom-navigation {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.85);
-  border-top: 1px solid rgba(226, 232, 240, 0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-top: 0.5px solid rgba(0, 0, 0, 0.05);
   z-index: 1000;
-  box-shadow: 0 -2px 20px rgba(59, 130, 246, 0.08);
+
+  /* iOS-style shadow */
+  box-shadow:
+    0 -1px 0 0 rgba(0, 0, 0, 0.05),
+    0 -4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* Bottom Safe Area */
+/* Bottom Safe Area for iOS */
 .bottom-safe-area {
-  height: var(--safe-area-inset-bottom);
-  min-height: 0;
+  height: env(safe-area-inset-bottom);
   background: inherit;
 }
 
-/* Navigation Container */
+/* Modern Navigation Container */
 .nav-container {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 8px 16px 12px 16px;
-  min-height: 64px;
-  max-width: 100%;
+  padding: 8px 16px;
+  min-height: 60px;
+  position: relative;
 }
 
-/* Navigation Item */
+/* Ultra-Modern Navigation Item */
 .nav-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
-  min-width: 64px;
+  min-width: 56px;
   min-height: 56px;
-  padding: 6px 8px;
-  border-radius: 16px;
+  padding: 6px;
+  border-radius: 20px;
   background: transparent;
   border: none;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   flex: 1;
   max-width: 80px;
 
-  &:active {
-    transform: scale(0.92);
+  /* Modern ripple effect */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.4s ease;
+    opacity: 0;
+    pointer-events: none;
   }
 
+  /* Active state with modern design */
   &.active {
-    .nav-icon {
-      color: #3b82f6;
-      transform: scale(1.1);
+    &::before {
+      width: 48px;
+      height: 48px;
+      opacity: 1;
     }
 
-    .nav-label {
-      color: #3b82f6;
-      font-weight: 600;
+    .nav-icon,
+    mat-icon.nav-icon {
+      color: #3b82f6 !important;
+      transform: translateY(-2px) scale(1.1) !important;
+      filter: drop-shadow(0 2px 4px rgba(59, 130, 246, 0.3));
+    }
+
+
+    .nav-indicator {
+      opacity: 1;
+      transform: scale(1);
     }
   }
 
-  &:not(.active) {
-    &:hover {
-      background: rgba(248, 250, 252, 0.6);
+  /* Hover state */
+  &:not(.active):hover {
+    &::before {
+      width: 40px;
+      height: 40px;
+      opacity: 0.7;
+    }
 
-      .nav-icon {
-        transform: scale(1.05);
-      }
+    .nav-icon,
+    mat-icon.nav-icon {
+      color: #1f2937 !important;
+      transform: translateY(-1px) scale(1.05) !important;
+    }
+
+  }
+
+  /* Touch feedback */
+  &:active {
+    transform: scale(0.95);
+
+    &::before {
+      width: 36px;
+      height: 36px;
+      opacity: 1;
     }
   }
 }
 
-/* Icon Container */
+/* Modern Icon Container */
 .nav-icon-container {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 4px;
+  margin-bottom: 0;
 }
 
-/* Navigation Icon */
-.nav-icon {
-  font-size: 24px;
-  width: 24px;
-  height: 24px;
-  color: var(--text-muted);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* 2024 Navigation Icon */
+.nav-icon,
+mat-icon.nav-icon {
+  font-size: 22px !important;
+  width: 22px !important;
+  height: 22px !important;
+  color: #6b7280 !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+  transform-origin: center center !important;
 }
 
-/* Navigation Label */
+/* Navigation Label - Hidden for icons-only design */
 .nav-label {
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--text-muted);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  text-align: center;
-  line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
+  display: none;
 }
 
-/* Active Indicator */
-.active-indicator {
+/* Modern Active Indicator */
+.nav-indicator {
   position: absolute;
-  top: -2px;
+  top: 4px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) scale(0);
   width: 4px;
   height: 4px;
   background: #3b82f6;
   border-radius: 50%;
   opacity: 0;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-  &.visible {
-    opacity: 1;
-  }
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Badge Styling Override */
+/* Badge Styling - Modern */
 ::ng-deep .mat-mdc-badge {
   .mat-mdc-badge-content {
-    background: var(--error-color) !important;
+    background: #ef4444 !important;
     color: white !important;
-    font-size: 10px !important;
+    font-size: 9px !important;
     font-weight: 600 !important;
-    min-width: 16px !important;
-    height: 16px !important;
-    line-height: 16px !important;
-    border-radius: 8px !important;
+    min-width: 14px !important;
+    height: 14px !important;
+    line-height: 14px !important;
+    border-radius: 7px !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.9) !important;
+    transform: translate(25%, -25%);
   }
 }
 
-/* Enhanced Active State Animation */
-@keyframes bounce-in {
-  0% {
-    transform: scale(0.8);
-    opacity: 0;
+/* Floating Action Button Style (for special actions) */
+.nav-item.fab-style {
+  .nav-icon-container {
+    width: 52px;
+    height: 52px;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    border-radius: 26px;
+    box-shadow:
+      0 4px 12px rgba(59, 130, 246, 0.4),
+      0 2px 4px rgba(59, 130, 246, 0.2);
+    margin-bottom: 4px;
   }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
 
-.nav-item.active .nav-icon {
-  animation: bounce-in 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  .nav-icon,
+  mat-icon.nav-icon {
+    color: white !important;
+    font-size: 24px !important;
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  &:hover .nav-icon-container {
+    transform: translateY(-2px);
+    box-shadow:
+      0 6px 16px rgba(59, 130, 246, 0.5),
+      0 4px 8px rgba(59, 130, 246, 0.3);
+  }
+
+  &:active .nav-icon-container {
+    transform: translateY(0);
+  }
 }
 
 /* Tablet Optimization */
 @media (min-width: 768px) {
   .nav-container {
-    padding: 12px 32px 16px 32px;
-    min-height: 72px;
+    padding: 12px 32px;
+    min-height: 64px;
     justify-content: center;
-    gap: 40px;
+    gap: 60px;
+    max-width: 500px;
+    margin: 0 auto;
   }
 
   .nav-item {
-    min-width: 80px;
+    min-width: 64px;
     min-height: 64px;
-    padding: 8px 12px;
-    max-width: 100px;
+    padding: 8px;
+    max-width: 80px;
   }
 
-  .nav-icon {
-    font-size: 26px;
-    width: 26px;
-    height: 26px;
+  .nav-icon,
+  mat-icon.nav-icon {
+    font-size: 24px !important;
+    width: 24px !important;
+    height: 24px !important;
   }
 
   .nav-label {
-    font-size: 12px;
+    font-size: 11px;
   }
 }
 
-/* Large Screen Optimization */
+/* Desktop - Hide like modern apps */
 @media (min-width: 1024px) {
   .bottom-navigation {
-    /* Hide on desktop or convert to sidebar */
     display: none;
   }
 }
 
-/* Small Mobile Optimization */
+/* Small Mobile Devices */
 @media (max-width: 375px) {
   .nav-container {
-    padding: 6px 8px 10px 8px;
-    min-height: 60px;
-  }
-
-  .nav-item {
-    min-width: 56px;
-    min-height: 52px;
-    padding: 4px 6px;
-    max-width: 72px;
-  }
-
-  .nav-icon {
-    font-size: 22px;
-    width: 22px;
-    height: 22px;
-  }
-
-  .nav-label {
-    font-size: 10px;
-  }
-
-  .nav-icon-container {
-    margin-bottom: 2px;
-  }
-}
-
-/* Very Small Mobile */
-@media (max-width: 320px) {
-  .nav-container {
-    padding: 4px 4px 8px 4px;
+    padding: 6px 12px;
     min-height: 56px;
   }
 
   .nav-item {
-    min-width: 48px;
-    min-height: 48px;
-    padding: 3px 4px;
-    max-width: 64px;
+    min-width: 52px;
+    min-height: 52px;
+    padding: 4px;
+    max-width: 70px;
   }
 
-  .nav-icon {
-    font-size: 20px;
-    width: 20px;
-    height: 20px;
+  .nav-icon,
+  mat-icon.nav-icon {
+    font-size: 20px !important;
+    width: 20px !important;
+    height: 20px !important;
   }
 
   .nav-label {
@@ -249,43 +272,106 @@
   }
 }
 
-/* Dark Theme Support */
-.theme-dark {
-  .bottom-navigation {
-    background: rgba(15, 23, 42, 0.85);
-    border-top-color: rgba(71, 85, 105, 0.6);
+/* Very Small Mobile */
+@media (max-width: 320px) {
+  .nav-container {
+    padding: 4px 8px;
+    min-height: 52px;
   }
 
-  .nav-item:not(.active):hover {
-    background: rgba(51, 65, 85, 0.6);
+  .nav-item {
+    min-width: 48px;
+    min-height: 48px;
+    padding: 3px;
+    max-width: 64px;
+  }
+
+  .nav-icon,
+  mat-icon.nav-icon {
+    font-size: 18px !important;
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .nav-label {
+    font-size: 8px;
   }
 }
 
-/* iOS Safari Specific */
+/* Dark Theme - Modern */
+.theme-dark {
+  .bottom-navigation {
+    background: rgba(17, 24, 39, 0.95);
+    border-top-color: rgba(75, 85, 99, 0.2);
+    box-shadow:
+      0 -1px 0 0 rgba(255, 255, 255, 0.05),
+      0 -4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav-item {
+    &::before {
+      background: radial-gradient(circle, rgba(96, 165, 250, 0.15) 0%, transparent 70%);
+    }
+
+    &.active {
+      .nav-icon,
+      mat-icon.nav-icon {
+        color: #60a5fa !important;
+        filter: drop-shadow(0 2px 4px rgba(96, 165, 250, 0.4));
+      }
+
+
+      .nav-indicator {
+        background: #60a5fa;
+      }
+    }
+
+    &:not(.active):hover {
+      .nav-icon,
+      mat-icon.nav-icon {
+        color: #e5e7eb !important;
+      }
+
+    }
+  }
+
+  .nav-icon,
+  mat-icon.nav-icon {
+    color: #9ca3af !important;
+  }
+
+}
+
+/* iOS Safari Optimizations */
 @supports (-webkit-touch-callout: none) {
   .nav-item {
     -webkit-tap-highlight-color: transparent;
     -webkit-user-select: none;
   }
 
-  /* Prevent zoom on double tap */
   .nav-item * {
     touch-action: manipulation;
+  }
+
+  /* Use env() for safe area */
+  .bottom-safe-area {
+    height: env(safe-area-inset-bottom, 0);
   }
 }
 
 /* High Contrast Support */
 @media (prefers-contrast: high) {
   .nav-item.active {
-    background: var(--info-color);
+    background: #3b82f6;
+    border-radius: 12px;
 
     .nav-icon,
-    .nav-label {
-      color: white;
+    mat-icon.nav-icon {
+      color: white !important;
     }
   }
 
-  .active-indicator {
+  .nav-indicator {
     display: none;
   }
 }
@@ -295,15 +381,47 @@
   .nav-item,
   .nav-icon,
   .nav-label,
-  .active-indicator {
-    transition: none;
+  .nav-indicator {
+    transition: none !important;
   }
 
-  .nav-item.active .nav-icon {
-    animation: none;
+  .nav-item::before {
+    transition: none !important;
   }
 
   .nav-item:active {
-    transform: none;
+    transform: none !important;
   }
+}
+
+/* Modern Pulse Animation for Active State */
+@keyframes modern-pulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.nav-item.active .nav-indicator {
+  animation: modern-pulse 2s infinite ease-in-out;
+}
+
+/* Smooth Entry Animation */
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.bottom-navigation {
+  animation: slide-up 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }

@@ -32,29 +32,29 @@ export class BottomNavigationComponent {
     {
       id: 'home',
       label: 'Home',
-      icon: 'home_outlined',
+      icon: 'home',
       iconFilled: 'home',
       route: '/home',
       isActive: true
     },
     {
-      id: 'search',
-      label: 'Search',
-      icon: 'search',
-      iconFilled: 'search'
+      id: 'explore',
+      label: 'Explore',
+      icon: 'explore',
+      iconFilled: 'explore'
     },
     {
-      id: 'orders',
-      label: 'Orders',
-      icon: 'receipt_long',
-      iconFilled: 'receipt_long',
-      badge: 2
+      id: 'create',
+      label: 'Create',
+      icon: 'add_circle_outline',
+      iconFilled: 'add_circle'
     },
     {
-      id: 'favorites',
-      label: 'Favorites',
-      icon: 'favorite_border',
-      iconFilled: 'favorite'
+      id: 'activity',
+      label: 'Activity',
+      icon: 'notifications_none',
+      iconFilled: 'notifications',
+      badge: 3
     },
     {
       id: 'profile',

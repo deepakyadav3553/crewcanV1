@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   padding-top: 150px; /* Space for fixed header */
-  padding-bottom: 80px; /* Space for bottom navigation */
+  padding-bottom: 76px; /* Space for modern bottom navigation */
   position: relative;
   overflow: hidden;
 }
@@ -416,7 +416,7 @@
 @media (max-width: 768px) {
   /* Mobile devices */
   .home-container {
-    padding-bottom: 88px; /* More space for mobile bottom nav */
+    padding-bottom: 76px; /* Space for modern mobile bottom nav */
   }
 
   .content {
