@@ -5,13 +5,18 @@
       <h1>Welcome to CrewCan!</h1>
       <p class="user-info">Hello, {{ getCurrentUser()?.mobileNumber }}!</p>
     </div>
-    <button class="logout-button" (click)="onLogout()">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-        <path d="m9 21 6-6-6-6"/>
-        <path d="M20 12H4"/>
-      </svg>
-      Logout
-    </button>
+    <div class="header-actions">
+      <button class="theme-toggle" (click)="themeService.toggleTheme()" title="{{ themeService.getThemeLabel() }}">
+        {{ themeService.getThemeIcon() }}
+      </button>
+      <button class="logout-button" (click)="onLogout()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="m9 21 6-6-6-6"/>
+          <path d="M20 12H4"/>
+        </svg>
+        Logout
+      </button>
+    </div>
   </div>
 
   <!-- Content -->

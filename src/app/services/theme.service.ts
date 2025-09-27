@@ -11,6 +11,8 @@ export interface ThemeConfig {
   isDark: boolean;
 }
 
+export type ThemeMode = 'light' | 'dark' | 'auto';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -26,18 +28,33 @@ export class ThemeService {
   });
 
   public isDarkMode = signal<boolean>(false);
+  public themeMode = signal<ThemeMode>('auto');
 
   private observer: MutationObserver | null = null;
   private mediaQuery: MediaQueryList;
+  private readonly THEME_KEY = 'crewcan-theme-mode';
 
   constructor() {
+    // Initialize mobile device detection
+    this.initializeMobileThemeDetection();
+
+    // Load saved theme mode (only if user explicitly set it)
+    this.loadSavedThemeMode();
+
     // Listen for system dark mode changes
     this.mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     this.isDarkMode.set(this.mediaQuery.matches);
 
     this.mediaQuery.addEventListener('change', (e) => {
       this.isDarkMode.set(e.matches);
+      // If user hasn't explicitly set a theme, follow system preference
+      if (this.themeMode() === 'auto') {
+        this.updateThemeClass();
+      }
     });
+
+    // Initialize theme - prioritize system preference for mobile
+    this.initializeThemeBasedOnDevice();
 
     // Initialize mobile features
     this.initializeMobileFeatures();
@@ -48,8 +65,16 @@ export class ThemeService {
       this.updateStatusBarForTheme(theme);
     });
 
+    // Effect to apply theme mode changes
+    effect(() => {
+      this.updateThemeClass();
+    });
+
     // Start monitoring background color changes
     this.startBackgroundMonitoring();
+
+    // Enhanced mobile theme monitoring
+    this.setupEnhancedMobileThemeDetection();
   }
 
   private startBackgroundMonitoring(): void {
@@ -311,6 +336,206 @@ export class ThemeService {
         console.error('Error showing status bar:', error);
       }
     }
+  }
+
+  // Enhanced mobile theme detection methods
+  private initializeMobileThemeDetection(): void {
+    // Detect if this is a mobile device
+    const isMobile = this.isMobileDevice();
+
+    if (isMobile) {
+      console.log('Mobile device detected - will follow system theme preference');
+    }
+  }
+
+  private initializeThemeBasedOnDevice(): void {
+    const isMobile = this.isMobileDevice();
+    const systemIsDark = this.isDarkMode();
+
+    // For mobile devices, default to auto mode to follow system
+    if (isMobile && !localStorage.getItem(this.THEME_KEY)) {
+      this.themeMode.set('auto');
+      console.log(`Mobile device theme initialized: Auto (${systemIsDark ? 'Dark' : 'Light'})`);
+    }
+
+    this.updateThemeClass();
+  }
+
+  private setupEnhancedMobileThemeDetection(): void {
+    const isMobile = this.isMobileDevice();
+
+    if (isMobile) {
+      // Additional mobile-specific theme detection
+      this.setupVisibilityChangeDetection();
+      this.setupOrientationChangeDetection();
+    }
+  }
+
+  private setupVisibilityChangeDetection(): void {
+    // When user returns to app (e.g., from settings), recheck theme
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden && this.themeMode() === 'auto') {
+        // Small delay to allow system to settle
+        setTimeout(() => {
+          const newSystemIsDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (newSystemIsDark !== this.isDarkMode()) {
+            this.isDarkMode.set(newSystemIsDark);
+            this.updateThemeClass();
+            console.log(`System theme changed to: ${newSystemIsDark ? 'Dark' : 'Light'}`);
+          }
+        }, 100);
+      }
+    });
+  }
+
+  private setupOrientationChangeDetection(): void {
+    // On orientation change, recheck theme (some devices change theme on rotation)
+    window.addEventListener('orientationchange', () => {
+      if (this.themeMode() === 'auto') {
+        setTimeout(() => {
+          const newSystemIsDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (newSystemIsDark !== this.isDarkMode()) {
+            this.isDarkMode.set(newSystemIsDark);
+            this.updateThemeClass();
+            console.log(`Theme updated after orientation change: ${newSystemIsDark ? 'Dark' : 'Light'}`);
+          }
+        }, 200);
+      }
+    });
+  }
+
+  private isMobileDevice(): boolean {
+    // Check for mobile device using multiple methods
+    const userAgent = navigator.userAgent.toLowerCase();
+    const isMobileUserAgent = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent);
+
+    // Check for touch capability
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+    // Check screen size (assuming mobile if width <= 768px)
+    const isSmallScreen = window.innerWidth <= 768;
+
+    // Check if running in Capacitor (native mobile app)
+    const isCapacitor = Capacitor.isNativePlatform();
+
+    return isMobileUserAgent || isCapacitor || (isTouchDevice && isSmallScreen);
+  }
+
+  // Theme mode management methods
+  private loadSavedThemeMode(): void {
+    const saved = localStorage.getItem(this.THEME_KEY) as ThemeMode;
+    if (saved && ['light', 'dark', 'auto'].includes(saved)) {
+      this.themeMode.set(saved);
+    } else {
+      // If no saved preference and mobile device, default to auto
+      if (this.isMobileDevice()) {
+        this.themeMode.set('auto');
+      }
+    }
+  }
+
+  private updateThemeClass(): void {
+    const body = this.document.body;
+    const mode = this.themeMode();
+
+    // Remove existing theme classes
+    body.classList.remove('theme-light', 'theme-dark');
+
+    // Determine effective theme
+    let effectiveTheme: 'light' | 'dark';
+    if (mode === 'auto') {
+      effectiveTheme = this.isDarkMode() ? 'dark' : 'light';
+    } else {
+      effectiveTheme = mode;
+    }
+
+    // Apply theme class
+    body.classList.add(`theme-${effectiveTheme}`);
+  }
+
+  // Public theme control methods
+  public setThemeMode(mode: ThemeMode): void {
+    this.themeMode.set(mode);
+    localStorage.setItem(this.THEME_KEY, mode);
+    this.updateThemeClass();
+  }
+
+  public toggleTheme(): void {
+    const current = this.themeMode();
+    if (current === 'light') {
+      this.setThemeMode('dark');
+    } else if (current === 'dark') {
+      this.setThemeMode('light');
+    } else {
+      // If auto, toggle to opposite of current system preference
+      const systemIsDark = this.isDarkMode();
+      this.setThemeMode(systemIsDark ? 'light' : 'dark');
+    }
+  }
+
+  public getEffectiveTheme(): 'light' | 'dark' {
+    const mode = this.themeMode();
+    if (mode === 'auto') {
+      return this.isDarkMode() ? 'dark' : 'light';
+    }
+    return mode;
+  }
+
+  public isCurrentlyDark(): boolean {
+    return this.getEffectiveTheme() === 'dark';
+  }
+
+  public getThemeIcon(): string {
+    const mode = this.themeMode();
+    switch (mode) {
+      case 'light': return '☀️';
+      case 'dark': return '🌙';
+      case 'auto': return this.isDarkMode() ? '🌙' : '☀️';
+      default: return '☀️';
+    }
+  }
+
+  public getThemeLabel(): string {
+    const mode = this.themeMode();
+    const isMobile = this.isMobileDevice();
+    switch (mode) {
+      case 'light': return 'Light Mode';
+      case 'dark': return 'Dark Mode';
+      case 'auto': return isMobile
+        ? `System (${this.getEffectiveTheme()})`
+        : `Auto (${this.getEffectiveTheme()})`;
+      default: return 'Auto';
+    }
+  }
+
+  // Public method to force refresh theme detection (useful for mobile)
+  public refreshSystemTheme(): void {
+    const newSystemIsDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const currentSystemIsDark = this.isDarkMode();
+
+    if (newSystemIsDark !== currentSystemIsDark) {
+      this.isDarkMode.set(newSystemIsDark);
+      if (this.themeMode() === 'auto') {
+        this.updateThemeClass();
+        console.log(`System theme refreshed: ${newSystemIsDark ? 'Dark' : 'Light'}`);
+      }
+    }
+  }
+
+  // Check if running on mobile device
+  public isMobile(): boolean {
+    return this.isMobileDevice();
+  }
+
+  // Get system theme preference
+  public getSystemTheme(): 'light' | 'dark' {
+    return this.isDarkMode() ? 'dark' : 'light';
+  }
+
+  // Force auto mode (useful for mobile devices)
+  public setAutoMode(): void {
+    this.setThemeMode('auto');
+    console.log(`Theme set to auto mode - following system: ${this.getSystemTheme()}`);
   }
 
   public destroy(): void {
