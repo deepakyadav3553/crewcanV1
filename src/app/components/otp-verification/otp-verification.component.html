@@ -1,0 +1,97 @@
+<div class="otp-container">
+  <!-- Background Elements -->
+  <div class="background-elements">
+    <div class="bg-circle circle-1"></div>
+    <div class="bg-circle circle-2"></div>
+    <div class="bg-circle circle-3"></div>
+  </div>
+
+  <!-- Header with Back Button -->
+  <div class="header">
+    <button class="back-button animate-slide-up" (click)="onBack()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Title -->
+    <div class="title-section animate-slide-up delay-200">
+      <h1>Verify OTP</h1>
+      <p class="subtitle">Enter the 6-digit code sent to<br><strong>{{ mobileNumber() }}</strong></p>
+    </div>
+
+    <!-- OTP Input -->
+    <div class="otp-section animate-slide-up delay-400">
+      <div class="otp-inputs">
+        @for (digit of otpDigits(); track $index; let i = $index) {
+          <input
+            type="text"
+            class="otp-digit"
+            [class.filled]="digit !== ''"
+            [class.error]="hasError()"
+            maxlength="1"
+            [value]="digit"
+            (input)="onDigitInput($event, i)"
+            (keydown)="onKeyDown($event, i)"
+            (paste)="onPaste($event)"
+            #otpInput
+          />
+        }
+      </div>
+
+      @if (hasError()) {
+        <div class="error-message animate-shake">
+          {{ authService.error() }}
+        </div>
+      }
+    </div>
+
+    <!-- Timer and Resend -->
+    <div class="timer-section animate-slide-up delay-600">
+      @if (timer() > 0) {
+        <p class="timer-text">
+          Resend OTP in <span class="timer-count">{{ formatTime(timer()) }}</span>
+        </p>
+      } @else {
+        <button
+          class="resend-button"
+          (click)="onResendOtp()"
+          [disabled]="authService.isLoading()"
+        >
+          @if (authService.isLoading()) {
+            <span class="loading-spinner"></span>
+            Sending...
+          } @else {
+            Resend OTP
+          }
+        </button>
+      }
+    </div>
+
+    <!-- Verify Button -->
+    <div class="button-section animate-slide-up delay-800">
+      <button
+        class="verify-button"
+        [disabled]="!isOtpComplete() || authService.isLoading()"
+        [class.active]="isOtpComplete() && !authService.isLoading()"
+        (click)="onVerifyOtp()"
+      >
+        @if (authService.isLoading()) {
+          <span class="loading-spinner"></span>
+          <span class="button-text">Verifying...</span>
+        } @else {
+          <span class="button-text">Verify OTP</span>
+          <span class="button-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12,5 19,12 12,19"></polyline>
+            </svg>
+          </span>
+        }
+      </button>
+    </div>
+  </div>
+</div>

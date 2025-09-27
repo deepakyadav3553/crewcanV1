@@ -1,14 +1,1 @@
-@if (showWelcome()) {
-  <app-welcome></app-welcome>
-} @else {
-  <main class="main">
-    <div class="content">
-      <div class="left-side">
-        <h1>{{ getTranslations().app.title }}</h1>
-        <p>{{ getTranslations().app.description }}</p>
-      </div>
-    </div>
-  </main>
-
-  <router-outlet />
-}
+<router-outlet></router-outlet>

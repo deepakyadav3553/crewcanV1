@@ -1,42 +1,25 @@
-import { Component, signal, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ThemeService } from './services/theme.service';
 import { LanguageService } from './services/language.service';
-import { WelcomeComponent } from './welcome.component';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, WelcomeComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App implements OnInit, OnDestroy {
-  protected readonly title = signal('crewcanV1');
-  protected readonly showWelcome = signal(true);
-
   private themeService = inject(ThemeService);
   private languageService = inject(LanguageService);
 
   ngOnInit(): void {
-    // Check if welcome has been completed
-    const welcomeCompleted = localStorage.getItem('welcome-completed');
-    if (welcomeCompleted === 'true') {
-      this.showWelcome.set(false);
-    }
-
-    // Listen for welcome completion event
-    window.addEventListener('welcome-completed', () => {
-      this.showWelcome.set(false);
-    });
+    // Initialize theme service
+    // No need for manual navigation handling - Angular Router handles it
   }
 
   ngOnDestroy(): void {
     this.themeService.destroy();
-    window.removeEventListener('welcome-completed', () => {});
-  }
-
-  // Get current translations
-  getTranslations() {
-    return this.languageService.getTranslations();
   }
 }

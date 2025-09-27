@@ -1,0 +1,101 @@
+<div class="welcome-container">
+  <!-- Status Bar Safe Area -->
+  <div class="status-safe-area"></div>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo-wrapper animate-slide-up">
+      <img src="logo.svg" alt="CrewCan Logo" class="logo" />
+    </div>
+    <h1 class="animate-slide-up delay-200">{{ t().welcome.title }}</h1>
+    <p class="subtitle animate-slide-up delay-400">{{ t().welcome.subtitle }}</p>
+
+    <!-- Enhanced Progress Steps -->
+    <div class="progress-container animate-slide-up delay-600">
+      <div class="progress-steps">
+        <div class="step active">
+          <span class="step-number">1</span>
+        </div>
+        <div class="progress-line" [class.active]="canProceed()"></div>
+        <div class="step" [class.active]="canProceed()">
+          <span class="step-number">2</span>
+        </div>
+      </div>
+      <div class="progress-labels">
+        <span class="label active">Language</span>
+        <span class="label" [class.active]="canProceed()">Ready</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scrollable Content -->
+  <div class="scroll-content">
+    <!-- Enhanced Language Selection Card -->
+    <div class="card fade-in-up animate-delay-800">
+      <div class="card-header">
+        <div class="icon-badge pulse">
+          <span class="icon">🌐</span>
+        </div>
+        <div class="header-text">
+          <h2>{{ t().welcome.selectLanguage }}</h2>
+          <p class="description">Choose your preferred language to personalize your experience</p>
+        </div>
+      </div>
+
+      <div class="language-grid">
+        @for (language of supportedLanguages; track language.code; let i = $index) {
+          <button
+            class="language-card hover-lift"
+            [class.selected]="currentLanguage().code === language.code"
+            [style.animation-delay]="(i * 100) + 'ms'"
+            (click)="selectLanguage(language.code)"
+          >
+            <div class="card-background"></div>
+            <div class="flag animate-bounce-in">{{ language.flag }}</div>
+            <div class="language-name">{{ language.nativeName }}</div>
+            @if (currentLanguage().code === language.code) {
+              <div class="check-mark animate-scale-in">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <polyline points="20,6 9,17 4,12"></polyline>
+                </svg>
+              </div>
+            }
+            <div class="selection-ripple"></div>
+          </button>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom CTA -->
+  <div class="bottom-cta">
+    <button
+      class="continue-button enhanced-button"
+      [disabled]="!canProceed()"
+      [class.ready]="canProceed()"
+      (click)="onGetStarted()"
+    >
+      <div class="button-content">
+        <span class="button-text">{{ t().welcome.getStarted }}</span>
+        <span class="button-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12,5 19,12 12,19"></polyline>
+          </svg>
+        </span>
+      </div>
+      <div class="button-shimmer"></div>
+    </button>
+
+    @if (!canProceed()) {
+      <p class="helper-text">
+        {{ getCurrentLanguageCode() === 'hi'
+          ? 'जारी रखने के लिए भाषा चुनें'
+          : 'Select language to continue' }}
+      </p>
+    }
+  </div>
+
+  <!-- Bottom Safe Area -->
+  <div class="bottom-safe-area"></div>
+</div>
