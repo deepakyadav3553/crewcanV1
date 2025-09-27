@@ -6,11 +6,12 @@ import { Location } from '@angular/common';
 import { MaterialModule } from '../../material.module';
 import { LanguageService } from '../../services/language.service';
 import { AuthService } from '../../services/auth.service';
+import { BubbleBackgroundComponent } from '../../shared/components';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule, MaterialModule],
+  imports: [CommonModule, FormsModule, MaterialModule, BubbleBackgroundComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })

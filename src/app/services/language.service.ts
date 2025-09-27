@@ -11,7 +11,13 @@ export interface Translations {
   welcome: {
     title: string;
     subtitle: string;
+    description: string;
+    selectUserType: string;
+    userTypeHint: string;
+    employee: string;
+    employer: string;
     selectLanguage: string;
+    languageHint: string;
     getStarted: string;
   };
   common: {
@@ -55,8 +61,14 @@ export class LanguageService {
     en: {
       welcome: {
         title: 'Welcome to CrewCan',
-        subtitle: 'Set up your preferences to get started',
+        subtitle: 'Your crew management solution',
+        description: 'Get started by setting up your preferences for the best experience',
+        selectUserType: 'Select Your Role',
+        userTypeHint: 'Choose your role to customize your experience',
+        employee: 'Employee',
+        employer: 'Employer',
         selectLanguage: 'Choose Your Language',
+        languageHint: 'Select your preferred language to personalize your experience',
         getStarted: 'Get Started'
       },
       common: {
@@ -77,8 +89,14 @@ export class LanguageService {
     hi: {
       welcome: {
         title: 'CrewCan में आपका स्वागत है',
-        subtitle: 'शुरू करने के लिए अपनी प्राथमिकताएं सेट करें',
+        subtitle: 'आपका क्रू प्रबंधन समाधान',
+        description: 'सबसे अच्छे अनुभव के लिए अपनी प्राथमिकताएं सेट करके शुरुआत करें',
+        selectUserType: 'अपनी भूमिका चुनें',
+        userTypeHint: 'अपने अनुभव को अनुकूलित करने के लिए अपनी भूमिका चुनें',
+        employee: 'कर्मचारी',
+        employer: 'नियोक्ता',
         selectLanguage: 'अपनी भाषा चुनें',
+        languageHint: 'अपने अनुभव को व्यक्तिगत बनाने के लिए अपनी पसंदीदा भाषा चुनें',
         getStarted: 'शुरू करें'
       },
       common: {

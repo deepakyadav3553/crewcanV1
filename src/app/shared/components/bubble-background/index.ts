@@ -1,0 +1,1 @@
+export { BubbleBackgroundComponent } from './bubble-background.component';

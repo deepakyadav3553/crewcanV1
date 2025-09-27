@@ -1,0 +1,6 @@
+<div class="bubble-background"
+     [class]="'density-' + density + ' color-' + color + ' speed-' + speed">
+  @for (bubbleIndex of bubbles; track bubbleIndex) {
+    <div class="bubble" [class]="'bubble-' + bubbleIndex"></div>
+  }
+</div>
