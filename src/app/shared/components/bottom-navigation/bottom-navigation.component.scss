@@ -1,0 +1,309 @@
+/* Modern Bottom Navigation - Instagram Style */
+.bottom-navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.85);
+  border-top: 1px solid rgba(226, 232, 240, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 1000;
+  box-shadow: 0 -2px 20px rgba(59, 130, 246, 0.08);
+}
+
+/* Bottom Safe Area */
+.bottom-safe-area {
+  height: var(--safe-area-inset-bottom);
+  min-height: 0;
+  background: inherit;
+}
+
+/* Navigation Container */
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 8px 16px 12px 16px;
+  min-height: 64px;
+  max-width: 100%;
+}
+
+/* Navigation Item */
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-width: 64px;
+  min-height: 56px;
+  padding: 6px 8px;
+  border-radius: 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex: 1;
+  max-width: 80px;
+
+  &:active {
+    transform: scale(0.92);
+  }
+
+  &.active {
+    .nav-icon {
+      color: #3b82f6;
+      transform: scale(1.1);
+    }
+
+    .nav-label {
+      color: #3b82f6;
+      font-weight: 600;
+    }
+  }
+
+  &:not(.active) {
+    &:hover {
+      background: rgba(248, 250, 252, 0.6);
+
+      .nav-icon {
+        transform: scale(1.05);
+      }
+    }
+  }
+}
+
+/* Icon Container */
+.nav-icon-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+/* Navigation Icon */
+.nav-icon {
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+  color: var(--text-muted);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Navigation Label */
+.nav-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* Active Indicator */
+.active-indicator {
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background: #3b82f6;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.visible {
+    opacity: 1;
+  }
+}
+
+/* Badge Styling Override */
+::ng-deep .mat-mdc-badge {
+  .mat-mdc-badge-content {
+    background: var(--error-color) !important;
+    color: white !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+    min-width: 16px !important;
+    height: 16px !important;
+    line-height: 16px !important;
+    border-radius: 8px !important;
+  }
+}
+
+/* Enhanced Active State Animation */
+@keyframes bounce-in {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.nav-item.active .nav-icon {
+  animation: bounce-in 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Tablet Optimization */
+@media (min-width: 768px) {
+  .nav-container {
+    padding: 12px 32px 16px 32px;
+    min-height: 72px;
+    justify-content: center;
+    gap: 40px;
+  }
+
+  .nav-item {
+    min-width: 80px;
+    min-height: 64px;
+    padding: 8px 12px;
+    max-width: 100px;
+  }
+
+  .nav-icon {
+    font-size: 26px;
+    width: 26px;
+    height: 26px;
+  }
+
+  .nav-label {
+    font-size: 12px;
+  }
+}
+
+/* Large Screen Optimization */
+@media (min-width: 1024px) {
+  .bottom-navigation {
+    /* Hide on desktop or convert to sidebar */
+    display: none;
+  }
+}
+
+/* Small Mobile Optimization */
+@media (max-width: 375px) {
+  .nav-container {
+    padding: 6px 8px 10px 8px;
+    min-height: 60px;
+  }
+
+  .nav-item {
+    min-width: 56px;
+    min-height: 52px;
+    padding: 4px 6px;
+    max-width: 72px;
+  }
+
+  .nav-icon {
+    font-size: 22px;
+    width: 22px;
+    height: 22px;
+  }
+
+  .nav-label {
+    font-size: 10px;
+  }
+
+  .nav-icon-container {
+    margin-bottom: 2px;
+  }
+}
+
+/* Very Small Mobile */
+@media (max-width: 320px) {
+  .nav-container {
+    padding: 4px 4px 8px 4px;
+    min-height: 56px;
+  }
+
+  .nav-item {
+    min-width: 48px;
+    min-height: 48px;
+    padding: 3px 4px;
+    max-width: 64px;
+  }
+
+  .nav-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .nav-label {
+    font-size: 9px;
+  }
+}
+
+/* Dark Theme Support */
+.theme-dark {
+  .bottom-navigation {
+    background: rgba(15, 23, 42, 0.85);
+    border-top-color: rgba(71, 85, 105, 0.6);
+  }
+
+  .nav-item:not(.active):hover {
+    background: rgba(51, 65, 85, 0.6);
+  }
+}
+
+/* iOS Safari Specific */
+@supports (-webkit-touch-callout: none) {
+  .nav-item {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+  }
+
+  /* Prevent zoom on double tap */
+  .nav-item * {
+    touch-action: manipulation;
+  }
+}
+
+/* High Contrast Support */
+@media (prefers-contrast: high) {
+  .nav-item.active {
+    background: var(--info-color);
+
+    .nav-icon,
+    .nav-label {
+      color: white;
+    }
+  }
+
+  .active-indicator {
+    display: none;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .nav-item,
+  .nav-icon,
+  .nav-label,
+  .active-indicator {
+    transition: none;
+  }
+
+  .nav-item.active .nav-icon {
+    animation: none;
+  }
+
+  .nav-item:active {
+    transform: none;
+  }
+}

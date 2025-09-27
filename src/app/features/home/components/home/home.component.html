@@ -1,23 +1,17 @@
 <div class="home-container">
-  <!-- Header -->
-  <div class="header">
-    <div class="welcome-section">
-      <h1>Welcome to CrewCan!</h1>
-      <p class="user-info">Hello, {{ getCurrentUser()?.mobileNumber }}!</p>
-    </div>
-    <div class="header-actions">
-      <button class="theme-toggle" (click)="themeService.toggleTheme()" title="{{ themeService.getThemeLabel() }}">
-        {{ themeService.getThemeIcon() }}
-      </button>
-      <button class="logout-button" (click)="onLogout()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path d="m9 21 6-6-6-6"/>
-          <path d="M20 12H4"/>
-        </svg>
-        Logout
-      </button>
-    </div>
-  </div>
+  <!-- Bubble Background -->
+  <app-bubble-background density="medium" color="blue" speed="normal"></app-bubble-background>
+
+  <!-- Modern Header -->
+  <app-header
+    [userLocation]="userLocation"
+    [userName]="userName"
+    [notificationCount]="notificationCount"
+    (locationSelect)="onLocationSelect($event)"
+    (searchQuery)="onSearchQuery($event)"
+    (profileClick)="onProfileClick()"
+    (notificationClick)="onNotificationClick()">
+  </app-header>
 
   <!-- Content -->
   <div class="content">
@@ -50,4 +44,12 @@
       </div>
     </div>
   </div>
+
+  <!-- Bottom Navigation -->
+  <app-bottom-navigation
+    [items]="navigationItems"
+    [activeItemId]="activeNavItem"
+    (itemClick)="onNavigationItemClick($event)"
+    (activeItemChange)="onActiveNavItemChange($event)">
+  </app-bottom-navigation>
 </div>

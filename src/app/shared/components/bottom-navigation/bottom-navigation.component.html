@@ -1,0 +1,35 @@
+<nav class="bottom-navigation">
+  <!-- Bottom Safe Area -->
+  <div class="bottom-safe-area"></div>
+
+  <!-- Navigation Items -->
+  <div class="nav-container">
+    @for (item of items; track item.id) {
+      <button
+        class="nav-item"
+        [class.active]="isItemActive(item)"
+        (click)="onItemClick(item)"
+        [attr.aria-label]="item.label"
+        mat-button>
+
+        <!-- Icon with Badge -->
+        <div class="nav-icon-container">
+          <mat-icon
+            class="nav-icon"
+            [matBadge]="item.badge && item.badge > 0 ? item.badge : null"
+            matBadgeColor="warn"
+            matBadgeSize="small"
+            matBadgePosition="above after">
+            {{ getIcon(item) }}
+          </mat-icon>
+        </div>
+
+        <!-- Label -->
+        <span class="nav-label">{{ item.label }}</span>
+
+        <!-- Active Indicator -->
+        <div class="active-indicator" [class.visible]="isItemActive(item)"></div>
+      </button>
+    }
+  </div>
+</nav>

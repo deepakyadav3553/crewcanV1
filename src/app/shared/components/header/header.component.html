@@ -1,0 +1,123 @@
+<header class="app-header mobile-optimized">
+  <!-- Status Bar Safe Area -->
+  <div class="status-safe-area"></div>
+
+  <!-- Top Row: Location & Profile -->
+  <div class="header-top-row">
+    <!-- Left: Location -->
+    <div class="header-left">
+      @if (showLocationPicker) {
+        <div class="location-section" (click)="onLocationClick()">
+          <div class="location-icon">
+            <mat-icon>location_on</mat-icon>
+          </div>
+          <div class="location-info">
+            <span class="location-name">{{ userLocation }}</span>
+            <span class="location-label">Tap to change</span>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Right: Notifications & Profile -->
+    @if (showProfile) {
+      <div class="header-right">
+        <button
+          class="notification-button"
+          (click)="onNotificationClick()"
+          mat-icon-button
+          [matBadge]="notificationCount > 0 ? notificationCount : null"
+          matBadgeColor="warn"
+          matBadgeSize="small">
+          <mat-icon>notifications_none</mat-icon>
+        </button>
+
+        <button
+          class="profile-button"
+          [matMenuTriggerFor]="profileMenu"
+          mat-icon-button>
+          @if (userAvatar) {
+            <img [src]="userAvatar" [alt]="userName" class="profile-avatar" />
+          } @else {
+            <div class="profile-avatar-placeholder">
+              {{ getInitials(userName) }}
+            </div>
+          }
+        </button>
+
+        <!-- Profile Menu -->
+        <mat-menu #profileMenu="matMenu" class="profile-menu">
+          <div class="profile-header">
+            <div class="profile-avatar-large">
+              @if (userAvatar) {
+                <img [src]="userAvatar" [alt]="userName" />
+              } @else {
+                {{ getInitials(userName) }}
+              }
+            </div>
+            <div class="profile-details">
+              <span class="profile-name">{{ userName }}</span>
+              <span class="profile-subtitle">View Profile</span>
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+          <button mat-menu-item (click)="onProfileClick()">
+            <mat-icon>person</mat-icon>
+            <span>My Profile</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>favorite</mat-icon>
+            <span>Favorites</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>history</mat-icon>
+            <span>Order History</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>payment</mat-icon>
+            <span>Payment Methods</span>
+          </button>
+          <mat-divider></mat-divider>
+          <button mat-menu-item>
+            <mat-icon>settings</mat-icon>
+            <span>Settings</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>help</mat-icon>
+            <span>Help & Support</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>logout</mat-icon>
+            <span>Sign Out</span>
+          </button>
+        </mat-menu>
+      </div>
+    }
+  </div>
+
+  <!-- Bottom Row: Search Bar -->
+  @if (showSearch) {
+    <div class="header-search-row">
+      <div class="search-container" [class.focused]="isSearchFocused()">
+        <mat-icon class="search-icon">search</mat-icon>
+        <input
+          type="text"
+          class="search-input"
+          placeholder="What are you craving today?"
+          [value]="searchText()"
+          (input)="onSearchInput($event)"
+          (focus)="onSearchFocus()"
+          (blur)="onSearchBlur()"
+        />
+        @if (searchText()) {
+          <button
+            class="clear-search"
+            (click)="searchText.set(''); searchQuery.emit('')"
+            mat-icon-button>
+            <mat-icon>close</mat-icon>
+          </button>
+        }
+      </div>
+    </div>
+  }
+</header>

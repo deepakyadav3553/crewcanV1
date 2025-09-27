@@ -1,104 +1,29 @@
 .home-container {
   min-height: 100vh;
-  background: var(--gradient-bg);
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 30%, #f8fafc 70%, #f1f5f9 100%);
   color: var(--text-primary);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   transition: background 0.3s ease, color 0.3s ease;
-}
-
-/* Header */
-.header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2rem;
-  background: var(--card-bg);
-  box-shadow: 0 2px 8px var(--shadow-light);
-  border-bottom: 1px solid var(--border-color);
-  transition: background 0.3s ease, box-shadow 0.3s ease, border-bottom-color 0.3s ease;
+  flex-direction: column;
+  padding-bottom: 80px; /* Space for bottom navigation */
+  position: relative;
+  overflow: hidden;
 }
 
-.welcome-section {
-  h1 {
-    font-size: 2rem;
-    margin: 0 0 0.5rem 0;
-    color: #3b82f6;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-  }
-}
+/* Background Elements - Match global theme - Now handled by bubble component */
 
-.user-info {
-  font-size: 1rem;
-  color: var(--text-secondary);
-  margin: 0;
-  font-weight: 500;
-}
-
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.theme-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  background: var(--card-bg);
-  color: var(--text-primary);
-  border: 2px solid var(--border-color);
-  border-radius: 12px;
-  font-size: 20px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px var(--shadow-light);
-
-  &:hover {
-    background: var(--surface-bg);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px var(--shadow-medium);
-  }
-
-  &:active {
-    transform: translateY(0);
-  }
-}
-
-.logout-button {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: #ef4444;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 12px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: #dc2626;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
-  }
-
-  svg {
-    width: 18px;
-    height: 18px;
-    stroke-width: 2;
-  }
-}
+/* Floating background elements - Now handled by bubble component */
 
 /* Content */
 .content {
+  flex: 1;
   padding: 2rem;
   max-width: 800px;
   margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 .success-card {
@@ -204,28 +129,7 @@
   .home-container {
     max-width: 1600px;
     margin: 0 auto;
-  }
-
-  .header {
-    padding: 3rem 2.5rem;
-  }
-
-  .welcome-section h1 {
-    font-size: 2.5rem;
-  }
-
-  .user-info {
-    font-size: 1.2rem;
-  }
-
-  .logout-button {
-    padding: 16px 24px;
-    font-size: 16px;
-
-    svg {
-      width: 20px;
-      height: 20px;
-    }
+    padding-bottom: 0; /* No bottom nav on large screens */
   }
 
   .content {
@@ -270,28 +174,6 @@
 
 @media (max-width: 1920px) and (min-width: 1441px) {
   /* Large desktop screens */
-  .header {
-    padding: 2.5rem 2rem;
-  }
-
-  .welcome-section h1 {
-    font-size: 2.3rem;
-  }
-
-  .user-info {
-    font-size: 1.1rem;
-  }
-
-  .logout-button {
-    padding: 14px 22px;
-    font-size: 15px;
-
-    svg {
-      width: 19px;
-      height: 19px;
-    }
-  }
-
   .content {
     padding: 2.2rem;
     max-width: 850px;
@@ -334,14 +216,6 @@
 
 @media (max-width: 1440px) and (min-width: 1201px) {
   /* Standard desktop screens */
-  .header {
-    padding: 2.2rem 1.8rem;
-  }
-
-  .welcome-section h1 {
-    font-size: 2.1rem;
-  }
-
   .content {
     padding: 2rem;
     max-width: 800px;
@@ -414,17 +288,17 @@
   }
 }
 
+/* Desktop - Hide bottom navigation space */
+@media (min-width: 1024px) {
+  .home-container {
+    padding-bottom: 0;
+  }
+}
+
 @media (max-width: 768px) {
   /* Mobile devices */
-  .header {
-    padding: 1.5rem 1rem;
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center;
-
-    h1 {
-      font-size: 1.5rem;
-    }
+  .home-container {
+    padding-bottom: 88px; /* More space for mobile bottom nav */
   }
 
   .content {
@@ -458,23 +332,6 @@
 
 @media (max-width: 640px) {
   /* Small mobile devices */
-  .header {
-    padding: 1.2rem 0.8rem;
-
-    h1 {
-      font-size: 1.4rem;
-    }
-  }
-
-  .logout-button {
-    padding: 10px 16px;
-    font-size: 13px;
-
-    svg {
-      width: 16px;
-      height: 16px;
-    }
-  }
 
   .success-card {
     padding: 1.8rem 1.2rem;
@@ -508,24 +365,6 @@
 
 @media (max-width: 480px) {
   /* Very small mobile devices */
-  .header {
-    padding: 1rem;
-
-    h1 {
-      font-size: 1.25rem;
-    }
-  }
-
-  .user-info {
-    font-size: 0.9rem;
-  }
-
-  .logout-button {
-    padding: 8px 14px;
-    font-size: 12px;
-    border-radius: 10px;
-  }
-
   .content {
     padding: 0.8rem;
   }
@@ -568,13 +407,6 @@
 
 @media (max-width: 375px) {
   /* iPhone SE and similar */
-  .header {
-    padding: 0.8rem;
-
-    h1 {
-      font-size: 1.2rem;
-    }
-  }
 
   .success-card {
     padding: 1.2rem 0.8rem;
@@ -602,23 +434,6 @@
 
 @media (max-width: 320px) {
   /* Very small phones */
-  .header {
-    padding: 0.6rem;
-
-    h1 {
-      font-size: 1.1rem;
-    }
-  }
-
-  .user-info {
-    font-size: 0.8rem;
-  }
-
-  .logout-button {
-    padding: 6px 12px;
-    font-size: 11px;
-  }
-
   .content {
     padding: 0.6rem;
   }
