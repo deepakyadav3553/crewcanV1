@@ -331,7 +331,267 @@
 }
 
 /* Responsive Design */
+/* Large screens and beyond */
+@media (min-width: 1921px) {
+  /* 4K and ultra-wide monitors */
+  .welcome-container {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  .header {
+    padding: 80px 30px 50px;
+  }
+
+  .logo-container .logo {
+    width: 140px;
+    max-height: 70px;
+  }
+
+  .brand-info h1 {
+    font-size: 32px;
+  }
+
+  .brand-info .subtitle {
+    font-size: 20px;
+  }
+
+  .content-card {
+    max-width: 450px;
+    padding: 32px;
+  }
+
+  .user-type-option {
+    padding: 24px 18px;
+    min-height: 140px;
+
+    .user-type-icon {
+      width: 40px;
+      height: 40px;
+    }
+
+    .user-type-content .user-type-name {
+      font-size: 18px;
+    }
+  }
+
+  .section-header h2 {
+    font-size: 24px;
+  }
+
+  .get-started-button {
+    font-size: 20px;
+    padding: 20px 32px;
+  }
+}
+
+@media (max-width: 1920px) and (min-width: 1441px) {
+  /* Large desktop screens */
+  .header {
+    padding: 70px 28px 45px;
+  }
+
+  .logo-container .logo {
+    width: 130px;
+    max-height: 65px;
+  }
+
+  .brand-info h1 {
+    font-size: 30px;
+  }
+
+  .brand-info .subtitle {
+    font-size: 19px;
+  }
+
+  .content-card {
+    max-width: 420px;
+    padding: 28px;
+  }
+
+  .user-type-option {
+    padding: 22px 16px;
+    min-height: 130px;
+
+    .user-type-icon {
+      width: 36px;
+      height: 36px;
+    }
+
+    .user-type-content .user-type-name {
+      font-size: 16px;
+    }
+  }
+
+  .section-header h2 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 1440px) and (min-width: 1201px) {
+  /* Standard desktop screens */
+  .header {
+    padding: 65px 26px 40px;
+  }
+
+  .logo-container .logo {
+    width: 125px;
+    max-height: 62px;
+  }
+
+  .brand-info h1 {
+    font-size: 29px;
+  }
+
+  .brand-info .subtitle {
+    font-size: 18px;
+  }
+
+  .content-card {
+    max-width: 400px;
+    padding: 26px;
+  }
+
+  .user-type-option {
+    padding: 20px 15px;
+    min-height: 125px;
+
+    .user-type-icon {
+      width: 34px;
+      height: 34px;
+    }
+
+    .user-type-content .user-type-name {
+      font-size: 15px;
+    }
+  }
+
+  .section-header h2 {
+    font-size: 21px;
+  }
+}
+
+@media (max-width: 1200px) {
+  /* Large tablets and small laptops */
+  .header {
+    padding: 55px 22px 35px;
+  }
+
+  .logo-container .logo {
+    width: 115px;
+    max-height: 58px;
+  }
+
+  .content-card {
+    max-width: 380px;
+  }
+}
+
+@media (max-width: 992px) {
+  /* Tablets */
+  .header {
+    padding: 50px 20px 32px;
+  }
+
+  .logo-container .logo {
+    width: 110px;
+    max-height: 55px;
+  }
+
+  .brand-info h1 {
+    font-size: 26px;
+  }
+
+  .brand-info .subtitle {
+    font-size: 17px;
+  }
+
+  .content-card {
+    max-width: 360px;
+    padding: 22px;
+  }
+
+  .user-type-option {
+    padding: 18px 14px;
+    min-height: 110px;
+
+    .user-type-icon {
+      width: 30px;
+      height: 30px;
+    }
+
+    .user-type-content .user-type-name {
+      font-size: 14px;
+    }
+  }
+
+  .main-content {
+    gap: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Mobile devices */
+  .header {
+    padding: 45px 20px 30px;
+  }
+
+  .logo-container .logo {
+    width: 105px;
+    max-height: 52px;
+  }
+
+  .brand-info h1 {
+    font-size: 25px;
+  }
+
+  .brand-info .subtitle {
+    font-size: 16px;
+  }
+
+  .description-card {
+    padding: 15px;
+    max-width: 340px;
+
+    .description {
+      font-size: 13px;
+    }
+  }
+
+  .main-content {
+    padding: 0 20px;
+    gap: 18px;
+  }
+
+  .content-card {
+    padding: 22px;
+  }
+
+  .user-type-option {
+    padding: 18px 14px;
+    min-height: 105px;
+
+    .user-type-icon {
+      width: 30px;
+      height: 30px;
+    }
+
+    .user-type-content .user-type-name {
+      font-size: 14px;
+    }
+  }
+
+  .section-header h2 {
+    font-size: 19px;
+  }
+
+  .bottom-section {
+    padding: 22px;
+  }
+}
+
 @media (max-width: 640px) {
+  /* Small mobile devices */
   .header {
     padding: 40px 20px 30px;
   }
@@ -379,6 +639,10 @@
     .user-type-content .user-type-name {
       font-size: 13px;
     }
+  }
+
+  .section-header h2 {
+    font-size: 18px;
   }
 
   .bottom-section {
@@ -465,14 +729,123 @@
 
 }
 
+@media (max-width: 375px) {
+  /* iPhone SE and similar */
+  .header {
+    padding: 35px 18px 25px;
+  }
+
+  .logo-container .logo {
+    width: 95px;
+    max-height: 48px;
+  }
+
+  .brand-info h1 {
+    font-size: 22px;
+  }
+
+  .brand-info .subtitle {
+    font-size: 15px;
+  }
+
+  .description-card {
+    padding: 12px;
+    max-width: 300px;
+
+    .description {
+      font-size: 12px;
+    }
+  }
+
+  .main-content {
+    padding: 0 18px;
+    gap: 14px;
+  }
+
+  .content-card {
+    padding: 18px;
+  }
+
+  .user-type-option {
+    padding: 14px 10px;
+    min-height: 90px;
+
+    .user-type-icon {
+      width: 26px;
+      height: 26px;
+    }
+
+    .user-type-content .user-type-name {
+      font-size: 12px;
+    }
+  }
+
+  .section-header h2 {
+    font-size: 17px;
+  }
+
+  .language-option {
+    padding: 14px;
+
+    .language-content .language-name {
+      font-size: 14px;
+    }
+  }
+
+  .get-started-button {
+    font-size: 15px;
+    padding: 15px 20px;
+  }
+
+  .bottom-section {
+    padding: 18px;
+  }
+}
+
 @media (max-width: 360px) {
+  /* Small phones */
+  .header {
+    padding: 32px 16px 22px;
+  }
+
+  .logo-container .logo {
+    width: 90px;
+    max-height: 45px;
+  }
+
+  .brand-info h1 {
+    font-size: 20px;
+  }
+
+  .brand-info .subtitle {
+    font-size: 14px;
+  }
+
+  .description-card {
+    padding: 10px;
+    max-width: 280px;
+
+    .description {
+      font-size: 11px;
+    }
+  }
+
+  .main-content {
+    padding: 0 16px;
+    gap: 12px;
+  }
+
+  .content-card {
+    padding: 16px;
+  }
+
   .user-type-option {
     padding: 12px 8px;
     min-height: 80px;
 
     .user-type-icon {
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
     }
 
     .user-type-content .user-type-name {
@@ -480,15 +853,149 @@
     }
   }
 
+  .section-header h2 {
+    font-size: 16px;
+  }
+
+  .section-header .section-description {
+    font-size: 12px;
+  }
+
   .language-option {
     padding: 12px;
 
     .language-content {
-      gap: 10px;
+      gap: 8px;
 
       .language-name {
-        font-size: 14px;
+        font-size: 13px;
+      }
+
+      .flag {
+        font-size: 18px;
       }
     }
+  }
+
+  .get-started-button {
+    font-size: 14px;
+    padding: 14px 18px;
+  }
+
+  .bottom-section {
+    padding: 16px;
+  }
+
+  .helper-text {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 320px) {
+  /* Very small phones */
+  .header {
+    padding: 28px 14px 18px;
+  }
+
+  .logo-container .logo {
+    width: 85px;
+    max-height: 42px;
+  }
+
+  .brand-info h1 {
+    font-size: 18px;
+  }
+
+  .brand-info .subtitle {
+    font-size: 13px;
+  }
+
+  .description-card {
+    padding: 8px;
+    max-width: 260px;
+
+    .description {
+      font-size: 10px;
+    }
+
+    .description-icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .main-content {
+    padding: 0 14px;
+    gap: 10px;
+  }
+
+  .content-card {
+    padding: 14px;
+  }
+
+  .user-type-option {
+    padding: 10px 6px;
+    min-height: 70px;
+
+    .user-type-icon {
+      width: 20px;
+      height: 20px;
+    }
+
+    .user-type-content .user-type-name {
+      font-size: 10px;
+    }
+
+    .check-icon {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  .section-header h2 {
+    font-size: 15px;
+  }
+
+  .section-header .section-description {
+    font-size: 11px;
+  }
+
+  .language-option {
+    padding: 10px;
+
+    .language-content {
+      gap: 6px;
+
+      .language-name {
+        font-size: 12px;
+      }
+
+      .flag {
+        font-size: 16px;
+      }
+    }
+
+    .check-icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .get-started-button {
+    font-size: 13px;
+    padding: 12px 16px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .bottom-section {
+    padding: 14px;
+  }
+
+  .helper-text {
+    font-size: 11px;
   }
 }

@@ -159,8 +159,225 @@
   }
 }
 
-/* Responsive */
+/* Responsive Design */
+/* Large screens */
+@media (min-width: 1921px) {
+  /* 4K and ultra-wide monitors */
+  .home-container {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  .header {
+    padding: 3rem 2.5rem;
+  }
+
+  .welcome-section h1 {
+    font-size: 2.5rem;
+  }
+
+  .user-info {
+    font-size: 1.2rem;
+  }
+
+  .logout-button {
+    padding: 16px 24px;
+    font-size: 16px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .content {
+    padding: 2.5rem;
+    max-width: 900px;
+  }
+
+  .success-card {
+    padding: 4rem 3rem;
+
+    h2 {
+      font-size: 2.5rem;
+    }
+
+    p {
+      font-size: 1.3rem;
+    }
+  }
+
+  .success-icon {
+    width: 100px;
+    height: 100px;
+
+    svg {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  .user-details {
+    padding: 2.5rem;
+  }
+
+  .detail-item {
+    padding: 1.5rem 0;
+  }
+
+  .label, .value {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 1920px) and (min-width: 1441px) {
+  /* Large desktop screens */
+  .header {
+    padding: 2.5rem 2rem;
+  }
+
+  .welcome-section h1 {
+    font-size: 2.3rem;
+  }
+
+  .user-info {
+    font-size: 1.1rem;
+  }
+
+  .logout-button {
+    padding: 14px 22px;
+    font-size: 15px;
+
+    svg {
+      width: 19px;
+      height: 19px;
+    }
+  }
+
+  .content {
+    padding: 2.2rem;
+    max-width: 850px;
+  }
+
+  .success-card {
+    padding: 3.5rem 2.8rem;
+
+    h2 {
+      font-size: 2.3rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+  }
+
+  .success-icon {
+    width: 90px;
+    height: 90px;
+
+    svg {
+      width: 45px;
+      height: 45px;
+    }
+  }
+
+  .user-details {
+    padding: 2.2rem;
+  }
+
+  .detail-item {
+    padding: 1.3rem 0;
+  }
+
+  .label, .value {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 1440px) and (min-width: 1201px) {
+  /* Standard desktop screens */
+  .header {
+    padding: 2.2rem 1.8rem;
+  }
+
+  .welcome-section h1 {
+    font-size: 2.1rem;
+  }
+
+  .content {
+    padding: 2rem;
+    max-width: 800px;
+  }
+
+  .success-card {
+    padding: 3rem 2.5rem;
+
+    h2 {
+      font-size: 2.1rem;
+    }
+
+    p {
+      font-size: 1.15rem;
+    }
+  }
+
+  .success-icon {
+    width: 85px;
+    height: 85px;
+
+    svg {
+      width: 42px;
+      height: 42px;
+    }
+  }
+
+  .user-details {
+    padding: 2rem;
+  }
+
+  .detail-item {
+    padding: 1.2rem 0;
+  }
+
+  .label, .value {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  /* Large tablets and small laptops */
+  .content {
+    padding: 1.8rem;
+    max-width: 700px;
+  }
+
+  .success-card {
+    padding: 2.5rem;
+  }
+}
+
+@media (max-width: 992px) {
+  /* Tablets */
+  .content {
+    padding: 1.5rem;
+    max-width: 600px;
+  }
+
+  .success-card {
+    padding: 2.2rem;
+  }
+
+  .success-card h2 {
+    font-size: 1.8rem;
+  }
+
+  .success-card p {
+    font-size: 1rem;
+  }
+}
+
 @media (max-width: 768px) {
+  /* Mobile devices */
   .header {
     padding: 1.5rem 1rem;
     flex-direction: column;
@@ -174,6 +391,7 @@
 
   .content {
     padding: 1rem;
+    max-width: 100%;
   }
 
   .success-card {
@@ -181,6 +399,10 @@
 
     h2 {
       font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 1rem;
     }
   }
 
@@ -196,7 +418,58 @@
   }
 }
 
+@media (max-width: 640px) {
+  /* Small mobile devices */
+  .header {
+    padding: 1.2rem 0.8rem;
+
+    h1 {
+      font-size: 1.4rem;
+    }
+  }
+
+  .logout-button {
+    padding: 10px 16px;
+    font-size: 13px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .success-card {
+    padding: 1.8rem 1.2rem;
+    border-radius: 16px;
+
+    h2 {
+      font-size: 1.4rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+    }
+  }
+
+  .success-icon {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 1.5rem;
+
+    svg {
+      width: 35px;
+      height: 35px;
+    }
+  }
+
+  .user-details {
+    padding: 1.2rem;
+    border-radius: 12px;
+  }
+}
+
 @media (max-width: 480px) {
+  /* Very small mobile devices */
   .header {
     padding: 1rem;
 
@@ -205,8 +478,31 @@
     }
   }
 
+  .user-info {
+    font-size: 0.9rem;
+  }
+
+  .logout-button {
+    padding: 8px 14px;
+    font-size: 12px;
+    border-radius: 10px;
+  }
+
+  .content {
+    padding: 0.8rem;
+  }
+
   .success-card {
     padding: 1.5rem 1rem;
+
+    h2 {
+      font-size: 1.3rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
   }
 
   .success-icon {
@@ -217,5 +513,106 @@
       width: 30px;
       height: 30px;
     }
+  }
+
+  .user-details {
+    padding: 1rem;
+  }
+
+  .detail-item {
+    padding: 0.6rem 0;
+  }
+
+  .label, .value {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 375px) {
+  /* iPhone SE and similar */
+  .header {
+    padding: 0.8rem;
+
+    h1 {
+      font-size: 1.2rem;
+    }
+  }
+
+  .success-card {
+    padding: 1.2rem 0.8rem;
+
+    h2 {
+      font-size: 1.2rem;
+    }
+
+    p {
+      font-size: 0.85rem;
+    }
+  }
+
+  .success-icon {
+    width: 55px;
+    height: 55px;
+    margin-bottom: 1.2rem;
+
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  /* Very small phones */
+  .header {
+    padding: 0.6rem;
+
+    h1 {
+      font-size: 1.1rem;
+    }
+  }
+
+  .user-info {
+    font-size: 0.8rem;
+  }
+
+  .logout-button {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+
+  .content {
+    padding: 0.6rem;
+  }
+
+  .success-card {
+    padding: 1rem 0.6rem;
+
+    h2 {
+      font-size: 1.1rem;
+    }
+
+    p {
+      font-size: 0.8rem;
+      margin-bottom: 1.2rem;
+    }
+  }
+
+  .success-icon {
+    width: 50px;
+    height: 50px;
+
+    svg {
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  .user-details {
+    padding: 0.8rem;
+  }
+
+  .label, .value {
+    font-size: 0.85rem;
   }
 }

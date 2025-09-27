@@ -217,51 +217,242 @@
 }
 
 /* Responsive Design */
-@media (max-width: 640px) {
+@media (max-width: 1200px) {
+  /* Large tablets and small laptops */
   .density-medium {
-    .bubble-1 { width: 100px; height: 100px; top: -50px; right: -50px; }
-    .bubble-2 { width: 70px; height: 70px; left: -35px; }
-    .bubble-4 { width: 80px; height: 80px; left: -40px; }
+    .bubble-1 { width: 110px; height: 110px; top: -55px; right: -55px; }
+    .bubble-2 { width: 75px; height: 75px; left: -37px; }
+    .bubble-4 { width: 90px; height: 90px; left: -45px; }
+    .bubble-6 { width: 65px; height: 65px; }
   }
 
   .density-heavy {
-    .bubble-1 { width: 120px; height: 120px; top: -60px; right: -60px; }
-    .bubble-2 { width: 75px; height: 75px; left: -37px; }
-    .bubble-4 { width: 90px; height: 90px; left: -45px; }
+    .bubble-1 { width: 130px; height: 130px; top: -65px; right: -65px; }
+    .bubble-2 { width: 85px; height: 85px; left: -42px; }
+    .bubble-4 { width: 100px; height: 100px; left: -50px; }
+    .bubble-6 { width: 75px; height: 75px; }
+    .bubble-8 { width: 55px; height: 55px; }
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 992px) {
+  /* Tablets */
   .density-light {
-    .bubble-1 { width: 80px; height: 80px; top: -40px; right: -40px; }
-    .bubble-2 { width: 60px; height: 60px; left: -30px; }
-    .bubble-3 { width: 65px; height: 65px; right: -32px; }
-    .bubble-4 { width: 50px; height: 50px; left: -25px; }
+    .bubble-1 { width: 90px; height: 90px; top: -45px; right: -45px; }
+    .bubble-2 { width: 65px; height: 65px; left: -32px; }
+    .bubble-3 { width: 70px; height: 70px; right: -35px; }
+    .bubble-4 { width: 55px; height: 55px; left: -27px; }
   }
 
   .density-medium {
-    .bubble-1 { width: 80px; height: 80px; top: -40px; right: -40px; }
-    .bubble-2 { width: 60px; height: 60px; left: -30px; }
-    .bubble-3 { width: 45px; height: 45px; right: -22px; }
-    .bubble-4 { width: 70px; height: 70px; left: -35px; }
+    .bubble-1 { width: 105px; height: 105px; top: -52px; right: -52px; }
+    .bubble-2 { width: 72px; height: 72px; left: -36px; }
+    .bubble-3 { width: 55px; height: 55px; right: -27px; }
+    .bubble-4 { width: 85px; height: 85px; left: -42px; }
+    .bubble-5 { width: 35px; height: 35px; }
+    .bubble-6 { width: 60px; height: 60px; }
+  }
+
+  .density-heavy {
+    .bubble-1 { width: 125px; height: 125px; top: -62px; right: -62px; }
+    .bubble-2 { width: 80px; height: 80px; left: -40px; }
+    .bubble-3 { width: 65px; height: 65px; right: -32px; }
+    .bubble-4 { width: 95px; height: 95px; left: -47px; }
+    .bubble-5 { width: 45px; height: 45px; }
+    .bubble-6 { width: 70px; height: 70px; }
+    .bubble-7 { width: 30px; height: 30px; }
+    .bubble-8 { width: 50px; height: 50px; }
+  }
+}
+
+@media (max-width: 768px) {
+  /* Mobile devices */
+  .density-light {
+    .bubble-1 { width: 85px; height: 85px; top: -42px; right: -42px; }
+    .bubble-2 { width: 62px; height: 62px; left: -31px; }
+    .bubble-3 { width: 68px; height: 68px; right: -34px; }
+    .bubble-4 { width: 52px; height: 52px; left: -26px; }
+  }
+
+  .density-medium {
+    .bubble-1 { width: 100px; height: 100px; top: -50px; right: -50px; }
+    .bubble-2 { width: 70px; height: 70px; left: -35px; }
+    .bubble-3 { width: 50px; height: 50px; right: -25px; }
+    .bubble-4 { width: 80px; height: 80px; left: -40px; }
+    .bubble-5 { width: 32px; height: 32px; }
+    .bubble-6 { width: 58px; height: 58px; }
+  }
+
+  .density-heavy {
+    .bubble-1 { width: 115px; height: 115px; top: -57px; right: -57px; }
+    .bubble-2 { width: 75px; height: 75px; left: -37px; }
+    .bubble-3 { width: 60px; height: 60px; right: -30px; }
+    .bubble-4 { width: 90px; height: 90px; left: -45px; }
+    .bubble-5 { width: 42px; height: 42px; }
+    .bubble-6 { width: 65px; height: 65px; }
+    .bubble-7 { width: 28px; height: 28px; }
+    .bubble-8 { width: 48px; height: 48px; }
+  }
+}
+
+@media (max-width: 640px) {
+  /* Small mobile devices */
+  .density-light {
+    .bubble-1 { width: 82px; height: 82px; top: -41px; right: -41px; }
+    .bubble-2 { width: 58px; height: 58px; left: -29px; }
+    .bubble-3 { width: 63px; height: 63px; right: -31px; }
+    .bubble-4 { width: 48px; height: 48px; left: -24px; }
+  }
+
+  .density-medium {
+    .bubble-1 { width: 95px; height: 95px; top: -47px; right: -47px; }
+    .bubble-2 { width: 68px; height: 68px; left: -34px; }
+    .bubble-3 { width: 48px; height: 48px; right: -24px; }
+    .bubble-4 { width: 75px; height: 75px; left: -37px; }
     .bubble-5 { width: 30px; height: 30px; }
     .bubble-6 { width: 55px; height: 55px; }
   }
 
   .density-heavy {
-    .bubble-1 { width: 90px; height: 90px; top: -45px; right: -45px; }
-    .bubble-2 { width: 65px; height: 65px; left: -32px; }
-    .bubble-3 { width: 50px; height: 50px; right: -25px; }
-    .bubble-4 { width: 75px; height: 75px; left: -37px; }
+    .bubble-1 { width: 110px; height: 110px; top: -55px; right: -55px; }
+    .bubble-2 { width: 72px; height: 72px; left: -36px; }
+    .bubble-3 { width: 58px; height: 58px; right: -29px; }
+    .bubble-4 { width: 85px; height: 85px; left: -42px; }
+    .bubble-5 { width: 40px; height: 40px; }
+    .bubble-6 { width: 62px; height: 62px; }
+    .bubble-7 { width: 26px; height: 26px; }
+    .bubble-8 { width: 46px; height: 46px; }
+  }
+}
+
+@media (max-width: 480px) {
+  /* Very small mobile devices */
+  .bubble {
+    animation-duration: 10s !important;
+  }
+
+  .density-light {
+    .bubble-1 { width: 78px; height: 78px; top: -39px; right: -39px; }
+    .bubble-2 { width: 55px; height: 55px; left: -27px; }
+    .bubble-3 { width: 60px; height: 60px; right: -30px; }
+    .bubble-4 { width: 45px; height: 45px; left: -22px; }
+  }
+
+  .density-medium {
+    .bubble-1 { width: 85px; height: 85px; top: -42px; right: -42px; }
+    .bubble-2 { width: 62px; height: 62px; left: -31px; }
+    .bubble-3 { width: 42px; height: 42px; right: -21px; }
+    .bubble-4 { width: 68px; height: 68px; left: -34px; }
+    .bubble-5 { width: 28px; height: 28px; }
+    .bubble-6 { width: 50px; height: 50px; }
+  }
+
+  .density-heavy {
+    .bubble-1 { width: 95px; height: 95px; top: -47px; right: -47px; }
+    .bubble-2 { width: 68px; height: 68px; left: -34px; }
+    .bubble-3 { width: 52px; height: 52px; right: -26px; }
+    .bubble-4 { width: 78px; height: 78px; left: -39px; }
+    .bubble-5 { width: 38px; height: 38px; }
+    .bubble-6 { width: 58px; height: 58px; }
+    .bubble-7 { width: 24px; height: 24px; }
+    .bubble-8 { width: 42px; height: 42px; }
+  }
+}
+
+@media (max-width: 375px) {
+  /* iPhone SE and similar */
+  .density-light {
+    .bubble-1 { width: 72px; height: 72px; top: -36px; right: -36px; }
+    .bubble-2 { width: 50px; height: 50px; left: -25px; }
+    .bubble-3 { width: 55px; height: 55px; right: -27px; }
+    .bubble-4 { width: 42px; height: 42px; left: -21px; }
+  }
+
+  .density-medium {
+    .bubble-1 { width: 78px; height: 78px; top: -39px; right: -39px; }
+    .bubble-2 { width: 56px; height: 56px; left: -28px; }
+    .bubble-3 { width: 38px; height: 38px; right: -19px; }
+    .bubble-4 { width: 62px; height: 62px; left: -31px; }
+    .bubble-5 { width: 25px; height: 25px; }
+    .bubble-6 { width: 46px; height: 46px; }
+  }
+
+  .density-heavy {
+    .bubble-1 { width: 85px; height: 85px; top: -42px; right: -42px; }
+    .bubble-2 { width: 62px; height: 62px; left: -31px; }
+    .bubble-3 { width: 48px; height: 48px; right: -24px; }
+    .bubble-4 { width: 72px; height: 72px; left: -36px; }
     .bubble-5 { width: 35px; height: 35px; }
-    .bubble-6 { width: 60px; height: 60px; }
-    .bubble-7 { width: 25px; height: 25px; }
-    .bubble-8 { width: 45px; height: 45px; }
+    .bubble-6 { width: 52px; height: 52px; }
+    .bubble-7 { width: 22px; height: 22px; }
+    .bubble-8 { width: 38px; height: 38px; }
   }
 }
 
 @media (max-width: 360px) {
+  /* Small phones */
   .bubble {
-    animation-duration: 10s !important;
+    animation-duration: 12s !important;
+  }
+
+  .density-light {
+    .bubble-1 { width: 68px; height: 68px; top: -34px; right: -34px; }
+    .bubble-2 { width: 48px; height: 48px; left: -24px; }
+    .bubble-3 { width: 52px; height: 52px; right: -26px; }
+    .bubble-4 { width: 40px; height: 40px; left: -20px; }
+  }
+
+  .density-medium {
+    .bubble-1 { width: 72px; height: 72px; top: -36px; right: -36px; }
+    .bubble-2 { width: 52px; height: 52px; left: -26px; }
+    .bubble-3 { width: 36px; height: 36px; right: -18px; }
+    .bubble-4 { width: 58px; height: 58px; left: -29px; }
+    .bubble-5 { width: 24px; height: 24px; }
+    .bubble-6 { width: 42px; height: 42px; }
+  }
+
+  .density-heavy {
+    .bubble-1 { width: 78px; height: 78px; top: -39px; right: -39px; }
+    .bubble-2 { width: 58px; height: 58px; left: -29px; }
+    .bubble-3 { width: 45px; height: 45px; right: -22px; }
+    .bubble-4 { width: 68px; height: 68px; left: -34px; }
+    .bubble-5 { width: 32px; height: 32px; }
+    .bubble-6 { width: 48px; height: 48px; }
+    .bubble-7 { width: 20px; height: 20px; }
+    .bubble-8 { width: 35px; height: 35px; }
+  }
+}
+
+@media (max-width: 320px) {
+  /* Very small phones */
+  .bubble {
+    animation-duration: 14s !important;
+  }
+
+  .density-light {
+    .bubble-1 { width: 60px; height: 60px; top: -30px; right: -30px; }
+    .bubble-2 { width: 42px; height: 42px; left: -21px; }
+    .bubble-3 { width: 46px; height: 46px; right: -23px; }
+    .bubble-4 { width: 36px; height: 36px; left: -18px; }
+  }
+
+  .density-medium {
+    .bubble-1 { width: 65px; height: 65px; top: -32px; right: -32px; }
+    .bubble-2 { width: 46px; height: 46px; left: -23px; }
+    .bubble-3 { width: 32px; height: 32px; right: -16px; }
+    .bubble-4 { width: 52px; height: 52px; left: -26px; }
+    .bubble-5 { width: 20px; height: 20px; }
+    .bubble-6 { width: 38px; height: 38px; }
+  }
+
+  .density-heavy {
+    .bubble-1 { width: 70px; height: 70px; top: -35px; right: -35px; }
+    .bubble-2 { width: 52px; height: 52px; left: -26px; }
+    .bubble-3 { width: 40px; height: 40px; right: -20px; }
+    .bubble-4 { width: 60px; height: 60px; left: -30px; }
+    .bubble-5 { width: 28px; height: 28px; }
+    .bubble-6 { width: 42px; height: 42px; }
+    .bubble-7 { width: 18px; height: 18px; }
+    .bubble-8 { width: 30px; height: 30px; }
   }
 }

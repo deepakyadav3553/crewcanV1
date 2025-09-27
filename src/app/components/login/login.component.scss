@@ -632,10 +632,209 @@
   }
 }
 
-/* Responsive */
-@media (max-width: 640px) {
+/* Responsive Design */
+/* Large screens */
+@media (min-width: 1921px) {
+  /* 4K and ultra-wide monitors */
+  .login-container {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  .title-section h1 {
+    font-size: 56px;
+  }
+
+  .logo {
+    width: 220px;
+    max-height: 85px;
+  }
+
+  .input-wrapper {
+    max-width: 480px;
+  }
+
+  .input-card {
+    padding: 32px;
+  }
+
+  .mobile-input {
+    padding: 20px 55px 20px 20px;
+    font-size: 18px;
+  }
+
+  .login-button {
+    padding: 24px;
+    font-size: 20px;
+  }
+
+  .illustration-circle {
+    width: 380px;
+    height: 380px;
+  }
+
+  .chef-illustration {
+    width: 250px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 1920px) and (min-width: 1441px) {
+  /* Large desktop screens */
+  .title-section h1 {
+    font-size: 52px;
+  }
+
+  .logo {
+    width: 200px;
+    max-height: 80px;
+  }
+
+  .input-wrapper {
+    max-width: 450px;
+  }
+
+  .input-card {
+    padding: 28px;
+  }
+
+  .mobile-input {
+    padding: 18px 50px 18px 18px;
+    font-size: 17px;
+  }
+
+  .login-button {
+    padding: 22px;
+    font-size: 19px;
+  }
+
+  .illustration-circle {
+    width: 350px;
+    height: 350px;
+  }
+
+  .chef-illustration {
+    width: 220px;
+    height: 270px;
+  }
+}
+
+@media (max-width: 1440px) and (min-width: 1201px) {
+  /* Standard desktop screens */
+  .title-section h1 {
+    font-size: 48px;
+  }
+
+  .logo {
+    width: 190px;
+    max-height: 75px;
+  }
+
+  .input-wrapper {
+    max-width: 420px;
+  }
+
+  .input-card {
+    padding: 26px;
+  }
+
+  .mobile-input {
+    padding: 17px 48px 17px 17px;
+    font-size: 16px;
+  }
+
+  .login-button {
+    padding: 21px;
+    font-size: 18px;
+  }
+
+  .illustration-circle {
+    width: 320px;
+    height: 320px;
+  }
+
+  .chef-illustration {
+    width: 200px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 1200px) {
+  /* Large tablets and small laptops */
+  .title-section h1 {
+    font-size: 44px;
+  }
+
+  .logo {
+    width: 160px;
+    max-height: 65px;
+  }
+
+  .illustration-circle {
+    width: 280px;
+    height: 280px;
+  }
+
+  .input-wrapper {
+    max-width: 380px;
+  }
+}
+
+@media (max-width: 992px) {
+  /* Tablets */
+  .title-section h1 {
+    font-size: 42px;
+  }
+
+  .logo {
+    width: 150px;
+    max-height: 60px;
+  }
+
+  .illustration-circle {
+    width: 260px;
+    height: 260px;
+  }
+
+  .input-card {
+    padding: 22px;
+  }
+
+  .bg-circle {
+    &.circle-1 {
+      width: 180px;
+      height: 180px;
+      top: -90px;
+      right: -90px;
+    }
+
+    &.circle-2 {
+      width: 130px;
+      height: 130px;
+      left: -65px;
+    }
+
+    &.circle-3 {
+      width: 90px;
+      height: 90px;
+      right: -45px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  /* Mobile devices */
   .main-content {
-    padding: 16px;
+    padding: 18px;
+  }
+
+  .title-section h1 {
+    font-size: 40px;
+  }
+
+  .logo {
+    width: 140px;
+    max-height: 55px;
   }
 
   .input-card {
@@ -644,23 +843,101 @@
 
   .mobile-input {
     font-size: 16px;
+    padding: 15px 45px 15px 15px;
+  }
+
+  .login-button {
+    padding: 18px;
+    font-size: 17px;
+  }
+
+  .illustration-circle {
+    width: 240px;
+    height: 240px;
+  }
+
+  .chef-illustration {
+    width: 160px;
+    height: 200px;
+  }
+
+  .bg-circle {
+    &.circle-1 {
+      width: 160px;
+      height: 160px;
+      top: -80px;
+      right: -80px;
+    }
+
+    &.circle-2 {
+      width: 110px;
+      height: 110px;
+      left: -55px;
+    }
+
+    &.circle-3 {
+      width: 80px;
+      height: 80px;
+      right: -40px;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  /* Small mobile devices */
+  .main-content {
+    padding: 16px;
+  }
+
+  .title-section {
+    margin-bottom: 40px;
+  }
+
+  .title-section h1 {
+    font-size: 38px;
+  }
+
+  .input-section {
+    margin-bottom: 36px;
+  }
+
+  .input-card {
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .mobile-input {
+    font-size: 16px;
     padding: 14px 45px 14px 14px;
+    border-radius: 10px;
   }
 
   .login-button {
     padding: 16px;
     font-size: 16px;
+    border-radius: 14px;
+  }
+
+  .illustration-circle {
+    width: 200px;
+    height: 200px;
+  }
+
+  .chef-illustration {
+    width: 120px;
+    height: 150px;
   }
 }
 
 @media (max-width: 480px) {
+  /* Very small mobile devices */
   .main-content {
     padding: 12px;
   }
 
   .logo {
-    width: 140px;
-    max-height: 55px;
+    width: 130px;
+    max-height: 50px;
   }
 
   .title-section {
@@ -677,6 +954,7 @@
 
   .input-card {
     padding: 18px;
+    border-radius: 18px;
   }
 
   .mobile-input {
@@ -692,38 +970,75 @@
   }
 
   .illustration-circle {
-    width: 220px;
-    height: 220px;
+    width: 180px;
+    height: 180px;
   }
 
   .chef-illustration {
-    width: 140px;
-    height: 170px;
+    width: 110px;
+    height: 140px;
   }
 
   .bg-circle {
     &.circle-1 {
-      width: 150px;
-      height: 150px;
-      top: -75px;
-      right: -75px;
+      width: 130px;
+      height: 130px;
+      top: -65px;
+      right: -65px;
     }
 
     &.circle-2 {
-      width: 100px;
-      height: 100px;
-      left: -50px;
+      width: 90px;
+      height: 90px;
+      left: -45px;
     }
 
     &.circle-3 {
-      width: 70px;
-      height: 70px;
-      right: -35px;
+      width: 60px;
+      height: 60px;
+      right: -30px;
     }
   }
 }
 
+@media (max-width: 375px) {
+  /* iPhone SE and similar */
+  .title-section h1 {
+    font-size: 34px;
+  }
+
+  .logo {
+    width: 120px;
+    max-height: 48px;
+  }
+
+  .input-wrapper {
+    max-width: 100%;
+  }
+
+  .mobile-input {
+    font-size: 15px;
+    padding: 13px 38px 13px 13px;
+  }
+
+  .login-button {
+    font-size: 15px;
+    padding: 15px;
+  }
+
+  .illustration-circle {
+    width: 160px;
+    height: 160px;
+  }
+
+  .chef-illustration {
+    width: 100px;
+    height: 125px;
+  }
+}
+
 @media (max-width: 360px) {
+  /* Small phones */
   .title-section h1 {
     font-size: 32px;
   }
@@ -734,9 +1049,82 @@
 
   .mobile-input {
     font-size: 15px;
+    padding: 12px 35px 12px 12px;
   }
 
   .login-button {
     font-size: 15px;
+    padding: 14px;
+  }
+
+  .illustration-circle {
+    width: 140px;
+    height: 140px;
+  }
+
+  .chef-illustration {
+    width: 90px;
+    height: 110px;
+  }
+}
+
+@media (max-width: 320px) {
+  /* Very small phones */
+  .main-content {
+    padding: 10px;
+  }
+
+  .title-section h1 {
+    font-size: 28px;
+  }
+
+  .logo {
+    width: 110px;
+    max-height: 44px;
+  }
+
+  .input-card {
+    padding: 16px;
+  }
+
+  .mobile-input {
+    font-size: 14px;
+    padding: 12px 32px 12px 12px;
+  }
+
+  .login-button {
+    font-size: 14px;
+    padding: 14px;
+  }
+
+  .illustration-circle {
+    width: 120px;
+    height: 120px;
+  }
+
+  .chef-illustration {
+    width: 80px;
+    height: 100px;
+  }
+
+  .bg-circle {
+    &.circle-1 {
+      width: 100px;
+      height: 100px;
+      top: -50px;
+      right: -50px;
+    }
+
+    &.circle-2 {
+      width: 70px;
+      height: 70px;
+      left: -35px;
+    }
+
+    &.circle-3 {
+      width: 50px;
+      height: 50px;
+      right: -25px;
+    }
   }
 }

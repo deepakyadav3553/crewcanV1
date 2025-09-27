@@ -15,13 +15,105 @@ body {
   overflow-x: hidden;
 }
 
-/* Mobile-specific styles */
+/* Responsive breakpoints and mobile-specific styles */
+/* Large screens */
+@media (min-width: 1921px) {
+  /* 4K and ultra-wide monitors */
+  body::after {
+    width: 100px;
+    height: 100px;
+    top: 8%;
+    animation-duration: 20s;
+  }
+}
+
+@media (max-width: 1920px) and (min-width: 1441px) {
+  /* Large desktop screens */
+  body::after {
+    width: 90px;
+    height: 90px;
+    top: 10%;
+    animation-duration: 18s;
+  }
+}
+
+@media (max-width: 1440px) and (min-width: 1201px) {
+  /* Standard desktop screens */
+  body::after {
+    width: 80px;
+    height: 80px;
+    top: 12%;
+    animation-duration: 16s;
+  }
+}
+
+@media (max-width: 1200px) {
+  /* Large tablets and small laptops */
+  body::after {
+    width: 70px;
+    height: 70px;
+    top: 15%;
+  }
+}
+
+@media (max-width: 992px) {
+  /* Tablets */
+  body::after {
+    width: 60px;
+    height: 60px;
+    top: 20%;
+  }
+}
+
 @media (max-width: 768px) {
+  /* Mobile devices */
   body {
     padding-top: var(--safe-area-inset-top);
     padding-right: var(--safe-area-inset-right);
     padding-bottom: var(--safe-area-inset-bottom);
     padding-left: var(--safe-area-inset-left);
+  }
+
+  body::after {
+    width: 50px;
+    height: 50px;
+    top: 25%;
+    animation-duration: 12s;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Small mobile devices */
+  body::after {
+    width: 40px;
+    height: 40px;
+    right: -20px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Very small mobile devices */
+  body::after {
+    width: 30px;
+    height: 30px;
+    right: -15px;
+    animation-duration: 10s;
+  }
+}
+
+@media (max-width: 375px) {
+  /* iPhone SE, small phones */
+  body::after {
+    width: 25px;
+    height: 25px;
+    right: -12px;
+  }
+}
+
+@media (max-width: 320px) {
+  /* Very small phones */
+  body::after {
+    display: none; /* Hide on very small screens for performance */
   }
 }
 

@@ -351,30 +351,322 @@
   }
 }
 
-/* Responsive */
-@media (max-width: 640px) {
+/* Responsive Design */
+/* Large screens */
+@media (min-width: 1921px) {
+  /* 4K and ultra-wide monitors */
+  .otp-container {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  .main-content {
+    max-width: 500px;
+    padding: 32px;
+  }
+
+  .title-section h1 {
+    font-size: 38px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .otp-inputs {
+    padding: 40px 32px;
+    gap: 20px;
+  }
+
+  .otp-digit {
+    width: 68px;
+    height: 80px;
+    font-size: 28px;
+    border-radius: 20px;
+  }
+
+  .timer-text {
+    font-size: 18px;
+  }
+
+  .timer-count {
+    font-size: 20px;
+  }
+
+  .resend-button {
+    padding: 16px 32px;
+    font-size: 17px;
+  }
+
+  .verify-button {
+    padding: 24px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1920px) and (min-width: 1441px) {
+  /* Large desktop screens */
+  .main-content {
+    max-width: 460px;
+    padding: 28px;
+  }
+
+  .title-section h1 {
+    font-size: 36px;
+  }
+
+  .subtitle {
+    font-size: 17px;
+  }
+
+  .otp-inputs {
+    padding: 36px 28px;
+    gap: 18px;
+  }
+
+  .otp-digit {
+    width: 64px;
+    height: 76px;
+    font-size: 26px;
+    border-radius: 18px;
+  }
+
+  .timer-text {
+    font-size: 17px;
+  }
+
+  .timer-count {
+    font-size: 19px;
+  }
+
+  .resend-button {
+    padding: 15px 30px;
+    font-size: 16px;
+  }
+
+  .verify-button {
+    padding: 22px;
+    font-size: 19px;
+  }
+}
+
+@media (max-width: 1440px) and (min-width: 1201px) {
+  /* Standard desktop screens */
+  .main-content {
+    max-width: 440px;
+    padding: 26px;
+  }
+
+  .title-section h1 {
+    font-size: 34px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .otp-inputs {
+    padding: 34px 26px;
+    gap: 17px;
+  }
+
+  .otp-digit {
+    width: 60px;
+    height: 72px;
+    font-size: 25px;
+    border-radius: 17px;
+  }
+
+  .verify-button {
+    padding: 21px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 1200px) {
+  /* Large tablets and small laptops */
+  .main-content {
+    max-width: 380px;
+  }
+
+  .title-section h1 {
+    font-size: 30px;
+  }
+
+  .otp-digit {
+    width: 54px;
+    height: 66px;
+    font-size: 23px;
+  }
+
+  .bg-circle {
+    &.circle-1 {
+      width: 160px;
+      height: 160px;
+      top: -80px;
+      right: -80px;
+    }
+
+    &.circle-2 {
+      width: 110px;
+      height: 110px;
+      left: -55px;
+    }
+
+    &.circle-3 {
+      width: 80px;
+      height: 80px;
+      right: -40px;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  /* Tablets */
+  .main-content {
+    max-width: 360px;
+    padding: 18px;
+  }
+
+  .title-section h1 {
+    font-size: 29px;
+  }
+
+  .otp-inputs {
+    padding: 30px 22px;
+    gap: 15px;
+  }
+
+  .otp-digit {
+    width: 52px;
+    height: 64px;
+    font-size: 22px;
+  }
+
+  .verify-button {
+    padding: 19px;
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Mobile devices */
   .main-content {
     padding: 16px;
+    max-width: 100%;
+  }
+
+  .title-section {
+    margin-bottom: 36px;
+  }
+
+  .title-section h1 {
+    font-size: 30px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+  }
+
+  .otp-section {
+    margin-bottom: 36px;
+  }
+
+  .otp-inputs {
+    padding: 30px 22px;
+    gap: 15px;
+    border-radius: 22px;
+  }
+
+  .otp-digit {
+    width: 52px;
+    height: 64px;
+    font-size: 22px;
+    border-radius: 14px;
+  }
+
+  .timer-section {
+    margin-bottom: 36px;
+  }
+
+  .verify-button {
+    padding: 18px;
+    font-size: 17px;
+    border-radius: 15px;
+  }
+
+  .bg-circle {
+    &.circle-1 {
+      width: 150px;
+      height: 150px;
+      top: -75px;
+      right: -75px;
+    }
+
+    &.circle-2 {
+      width: 100px;
+      height: 100px;
+      left: -50px;
+    }
+
+    &.circle-3 {
+      width: 70px;
+      height: 70px;
+      right: -35px;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  /* Small mobile devices */
+  .main-content {
+    padding: 16px;
+  }
+
+  .title-section {
+    margin-bottom: 34px;
+  }
+
+  .title-section h1 {
+    font-size: 29px;
+  }
+
+  .otp-section {
+    margin-bottom: 34px;
   }
 
   .otp-inputs {
     padding: 28px 20px;
     gap: 14px;
+    border-radius: 20px;
   }
 
   .otp-digit {
     width: 50px;
     height: 62px;
     font-size: 22px;
+    border-radius: 13px;
+  }
+
+  .timer-section {
+    margin-bottom: 34px;
   }
 
   .verify-button {
     padding: 18px;
     font-size: 16px;
+    border-radius: 14px;
+  }
+
+  .resend-button {
+    padding: 13px 26px;
+    font-size: 15px;
+    border-radius: 14px;
   }
 }
 
 @media (max-width: 480px) {
+  /* Very small mobile devices */
   .main-content {
     padding: 12px;
     max-width: 100%;
@@ -435,38 +727,28 @@
 
   .bg-circle {
     &.circle-1 {
-      width: 140px;
-      height: 140px;
-      top: -70px;
-      right: -70px;
+      width: 120px;
+      height: 120px;
+      top: -60px;
+      right: -60px;
     }
 
     &.circle-2 {
-      width: 90px;
-      height: 90px;
-      left: -45px;
+      width: 80px;
+      height: 80px;
+      left: -40px;
     }
 
     &.circle-3 {
-      width: 60px;
-      height: 60px;
-      right: -30px;
+      width: 55px;
+      height: 55px;
+      right: -27px;
     }
   }
 }
 
 @media (max-width: 375px) {
-  .otp-inputs {
-    gap: 10px;
-    padding: 20px 12px;
-  }
-
-  .otp-digit {
-    width: 40px;
-    height: 52px;
-    font-size: 18px;
-  }
-
+  /* iPhone SE and similar */
   .title-section h1 {
     font-size: 26px;
   }
@@ -474,25 +756,137 @@
   .subtitle {
     font-size: 14px;
   }
+
+  .otp-inputs {
+    gap: 10px;
+    padding: 20px 12px;
+    border-radius: 18px;
+  }
+
+  .otp-digit {
+    width: 40px;
+    height: 52px;
+    font-size: 18px;
+    border-radius: 12px;
+  }
+
+  .timer-text {
+    font-size: 14px;
+  }
+
+  .timer-count {
+    font-size: 15px;
+  }
+
+  .resend-button {
+    padding: 11px 22px;
+    font-size: 14px;
+  }
+
+  .verify-button {
+    padding: 15px;
+    font-size: 15px;
+  }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 360px) {
+  /* Small phones */
+  .title-section h1 {
+    font-size: 25px;
+  }
+
   .otp-inputs {
-    gap: 8px;
+    gap: 9px;
     padding: 18px 10px;
   }
 
   .otp-digit {
-    width: 36px;
-    height: 48px;
-    font-size: 16px;
+    width: 38px;
+    height: 50px;
+    font-size: 17px;
+  }
+
+  .verify-button {
+    font-size: 15px;
+    padding: 14px;
+  }
+}
+
+@media (max-width: 320px) {
+  /* Very small phones */
+  .main-content {
+    padding: 10px;
+  }
+
+  .title-section {
+    margin-bottom: 28px;
   }
 
   .title-section h1 {
     font-size: 24px;
   }
 
+  .subtitle {
+    font-size: 13px;
+  }
+
+  .otp-section {
+    margin-bottom: 28px;
+  }
+
+  .otp-inputs {
+    gap: 8px;
+    padding: 16px 8px;
+    border-radius: 16px;
+  }
+
+  .otp-digit {
+    width: 36px;
+    height: 48px;
+    font-size: 16px;
+    border-radius: 10px;
+  }
+
+  .timer-section {
+    margin-bottom: 28px;
+  }
+
+  .timer-text {
+    font-size: 13px;
+  }
+
+  .timer-count {
+    font-size: 14px;
+  }
+
+  .resend-button {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+
   .verify-button {
-    font-size: 15px;
+    font-size: 14px;
+    padding: 14px;
+  }
+
+  .bg-circle {
+    &.circle-1 {
+      width: 90px;
+      height: 90px;
+      top: -45px;
+      right: -45px;
+    }
+
+    &.circle-2 {
+      width: 60px;
+      height: 60px;
+      left: -30px;
+    }
+
+    &.circle-3 {
+      width: 45px;
+      height: 45px;
+      right: -22px;
+    }
   }
 }
