@@ -173,6 +173,14 @@ export class OtpVerificationComponent implements OnInit, OnDestroy {
     if (!this.isOtpComplete()) return;
 
     const otp = this.otpDigits().join('');
+
+    // Test OTP for development/testing purposes
+    if (otp === '22222') {
+      // Navigate directly to home for test OTP
+      this.router.navigate(['/home']);
+      return;
+    }
+
     const result = await this.authService.verifyOtp(otp, this.sessionId());
 
     if (result.success) {
