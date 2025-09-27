@@ -49,5 +49,61 @@ body {
   padding-left: var(--safe-area-inset-left);
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Global Background Theme */
+body {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 30%, #f8fafc 70%, #f1f5f9 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+/* App Root Container */
+app-root {
+  display: block;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Global Background Elements for Animation */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(59, 130, 246, 0.04) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Floating background elements */
+@keyframes float-global {
+  0% { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
+  33% { transform: translateY(-20px) rotate(120deg); opacity: 0.9; }
+  66% { transform: translateY(-40px) rotate(240deg); opacity: 0.6; }
+  100% { transform: translateY(0px) rotate(360deg); opacity: 0.7; }
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 10%;
+  right: -30px;
+  width: 80px;
+  height: 80px;
+  background: rgba(59, 130, 246, 0.05);
+  border-radius: 50%;
+  animation: float-global 15s infinite linear;
+  pointer-events: none;
+  z-index: -1;
+}
