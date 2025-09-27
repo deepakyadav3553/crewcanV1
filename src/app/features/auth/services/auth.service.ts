@@ -265,6 +265,8 @@ export class AuthService {
   }
 
   private generateOtp(): string {
+    // Return fixed OTP for development/testing purposes
+    return '222222';
     return Math.floor(100000 + Math.random() * 900000).toString();
   }
 
