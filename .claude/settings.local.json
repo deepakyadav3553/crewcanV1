@@ -8,7 +8,8 @@
       "WebFetch(domain:capacitorjs.com)",
       "WebSearch",
       "WebFetch(domain:github.com)",
-      "WebFetch(domain:capawesome.io)"
+      "WebFetch(domain:capawesome.io)",
+      "Bash(ng add:*)"
     ],
     "deny": [],
     "ask": []
