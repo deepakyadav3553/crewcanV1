@@ -999,3 +999,126 @@
     font-size: 11px;
   }
 }
+
+/* Dark Theme Support */
+:host-context(.theme-dark) {
+  .welcome-container {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 30%, #334155 70%, #475569 100%);
+    color: #f1f5f9;
+  }
+
+  .brand-info {
+    h1 {
+      color: #f1f5f9;
+    }
+
+    .subtitle {
+      color: #60a5fa;
+    }
+  }
+
+  .description-card {
+    background: rgba(96, 165, 250, 0.1);
+    border-color: rgba(96, 165, 250, 0.2);
+
+    .description-icon {
+      color: #60a5fa;
+    }
+
+    .description {
+      color: #cbd5e1;
+    }
+  }
+
+  .content-card {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(71, 85, 105, 0.3);
+    color: #f1f5f9;
+  }
+
+  .section-header {
+    h2 {
+      color: #f1f5f9;
+    }
+
+    .section-description {
+      color: #94a3b8;
+    }
+  }
+
+  .user-type-option {
+    background: rgba(51, 65, 85, 0.6);
+    border-color: rgba(71, 85, 105, 0.4);
+    color: #f1f5f9;
+
+    &:hover {
+      background: rgba(51, 65, 85, 0.8);
+      border-color: rgba(100, 116, 139, 0.6);
+    }
+
+    &.selected {
+      background: rgba(59, 130, 246, 0.15);
+      border-color: #60a5fa;
+    }
+
+    .user-type-icon {
+      color: #94a3b8;
+    }
+
+    &.selected .user-type-icon {
+      color: #60a5fa;
+    }
+
+    .user-type-content .user-type-name {
+      color: #f1f5f9;
+    }
+
+    .check-icon {
+      color: #60a5fa;
+    }
+  }
+
+  .language-option {
+    background: rgba(51, 65, 85, 0.6);
+    border-color: rgba(71, 85, 105, 0.4);
+    color: #f1f5f9;
+
+    &:hover {
+      background: rgba(51, 65, 85, 0.8);
+      border-color: rgba(100, 116, 139, 0.6);
+    }
+
+    &.selected {
+      background: rgba(59, 130, 246, 0.15);
+      border-color: #60a5fa;
+    }
+
+    .language-content .language-name {
+      color: #f1f5f9;
+    }
+
+    .check-icon {
+      color: #60a5fa;
+    }
+  }
+
+  .get-started-button {
+    &:not(.enabled) {
+      background: rgba(71, 85, 105, 0.6);
+      color: #64748b;
+    }
+
+    &.enabled {
+      background: #1e40af;
+      color: white;
+
+      &:hover {
+        background: #1e3a8a;
+      }
+    }
+  }
+
+  .helper-text {
+    color: #94a3b8;
+  }
+}

@@ -645,3 +645,49 @@
     font-size: 0.85rem;
   }
 }
+
+/* Dark Theme Support */
+:host-context(.theme-dark) {
+  .home-container {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 30%, #334155 70%, #475569 100%);
+    color: #f1f5f9;
+  }
+
+  .service-card {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(71, 85, 105, 0.3);
+    color: #f1f5f9;
+
+    &:hover {
+      background: rgba(30, 41, 59, 0.9);
+      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.2);
+    }
+  }
+
+  .service-title {
+    color: #f1f5f9;
+  }
+
+  .partner-section {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(71, 85, 105, 0.3);
+    color: #f1f5f9;
+
+    &:hover {
+      background: rgba(30, 41, 59, 0.9);
+      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.2);
+    }
+
+    span {
+      color: #f1f5f9;
+    }
+  }
+
+  .job-search-banner {
+    background: linear-gradient(135deg, #1e40af, #1e3a8a);
+
+    &:hover {
+      box-shadow: 0 12px 30px rgba(30, 64, 175, 0.4);
+    }
+  }
+}

@@ -456,3 +456,19 @@
     .bubble-8 { width: 30px; height: 30px; }
   }
 }
+
+/* Dark Theme Support */
+:host-context(.theme-dark) {
+  /* Dark theme color variations with more subdued colors */
+  .color-blue .bubble {
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.06), rgba(147, 197, 253, 0.03));
+  }
+
+  .color-purple .bubble {
+    background: linear-gradient(135deg, rgba(167, 139, 250, 0.06), rgba(196, 181, 253, 0.03));
+  }
+
+  .color-green .bubble {
+    background: linear-gradient(135deg, rgba(52, 211, 153, 0.06), rgba(110, 231, 183, 0.03));
+  }
+}

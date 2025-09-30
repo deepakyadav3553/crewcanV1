@@ -52,6 +52,56 @@
     <!-- Right: Language, Notifications & Profile -->
     @if (showProfile) {
       <div class="header-right">
+        <!-- Theme Toggle -->
+        <button
+          class="theme-button"
+          (click)="onThemeMenuClick()">
+          <span class="theme-icon">{{ getThemeIcon() }}</span>
+
+          <!-- Theme Dropdown Menu -->
+          @if (showThemeMenu()) {
+            <div class="theme-menu" (click)="$event.stopPropagation()">
+              <div class="theme-menu-header">
+                <mat-icon>brightness_6</mat-icon>
+                <span>Theme</span>
+              </div>
+              <div class="theme-menu-item"
+                   (click)="onThemeSelect('light')"
+                   [class.active]="themeService.themeMode() === 'light'">
+                <span class="theme-icon">☀️</span>
+                <div class="theme-info">
+                  <span class="theme-name">Light Mode</span>
+                </div>
+                @if (themeService.themeMode() === 'light') {
+                  <mat-icon class="check-icon">check</mat-icon>
+                }
+              </div>
+              <div class="theme-menu-item"
+                   (click)="onThemeSelect('dark')"
+                   [class.active]="themeService.themeMode() === 'dark'">
+                <span class="theme-icon">🌙</span>
+                <div class="theme-info">
+                  <span class="theme-name">Dark Mode</span>
+                </div>
+                @if (themeService.themeMode() === 'dark') {
+                  <mat-icon class="check-icon">check</mat-icon>
+                }
+              </div>
+              <div class="theme-menu-item"
+                   (click)="onThemeSelect('auto')"
+                   [class.active]="themeService.themeMode() === 'auto'">
+                <span class="theme-icon">🌗</span>
+                <div class="theme-info">
+                  <span class="theme-name">{{ getThemeLabel() }}</span>
+                </div>
+                @if (themeService.themeMode() === 'auto') {
+                  <mat-icon class="check-icon">check</mat-icon>
+                }
+              </div>
+            </div>
+          }
+        </button>
+
         <!-- Language Selector -->
         <button
           class="language-button"

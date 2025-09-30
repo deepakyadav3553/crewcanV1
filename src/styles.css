@@ -266,3 +266,145 @@ body::after {
   pointer-events: none;
   z-index: -1;
 }
+
+/* Dark Theme Global Background */
+.theme-dark body {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 30%, #334155 70%, #475569 100%);
+}
+
+.theme-dark body::before {
+  background:
+    radial-gradient(circle at 20% 80%, rgba(96, 165, 250, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(147, 197, 253, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(59, 130, 246, 0.03) 0%, transparent 50%);
+}
+
+.theme-dark body::after {
+  background: rgba(96, 165, 250, 0.04);
+}
+
+/* Global Component Utility Classes for Theme Support */
+/* These classes can be used by any component to ensure theme compatibility */
+
+.bg-primary {
+  background-color: var(--primary-bg) !important;
+}
+
+.bg-secondary {
+  background-color: var(--secondary-bg) !important;
+}
+
+.bg-card {
+  background-color: var(--card-bg) !important;
+}
+
+.bg-surface {
+  background-color: var(--surface-bg) !important;
+}
+
+.text-primary {
+  color: var(--text-primary) !important;
+}
+
+.text-secondary {
+  color: var(--text-secondary) !important;
+}
+
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+.border-default {
+  border-color: var(--border-color) !important;
+}
+
+.shadow-light {
+  box-shadow: 0 4px 16px var(--shadow-light) !important;
+}
+
+.shadow-medium {
+  box-shadow: 0 8px 25px var(--shadow-medium) !important;
+}
+
+/* Global Material UI theme overrides for dark theme */
+.theme-dark .mat-mdc-form-field {
+  color: var(--text-primary);
+}
+
+.theme-dark .mat-mdc-form-field .mat-mdc-floating-label {
+  color: var(--text-secondary);
+}
+
+.theme-dark .mat-mdc-form-field .mat-mdc-text-field-wrapper {
+  background-color: var(--input-bg);
+}
+
+.theme-dark .mat-mdc-form-field .mat-mdc-outline {
+  color: var(--input-border);
+}
+
+.theme-dark .mat-mdc-form-field .mat-mdc-outline-thick {
+  color: var(--info-color);
+}
+
+.theme-dark .mat-mdc-input-element {
+  color: var(--text-primary);
+}
+
+.theme-dark .mat-mdc-input-element::placeholder {
+  color: var(--text-muted);
+}
+
+/* Global button overrides */
+.theme-dark .mat-mdc-button:not(.mat-mdc-raised-button):not(.mat-mdc-outlined-button) {
+  color: var(--text-primary);
+}
+
+.theme-dark .mat-mdc-icon-button {
+  color: var(--text-secondary);
+}
+
+/* Card and surface elements */
+.theme-dark .mat-mdc-card {
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+}
+
+/* Ensure all text elements inherit theme colors */
+.theme-dark h1, .theme-dark h2, .theme-dark h3, .theme-dark h4, .theme-dark h5, .theme-dark h6 {
+  color: var(--text-primary);
+}
+
+.theme-dark p, .theme-dark span, .theme-dark div {
+  color: inherit;
+}
+
+/* Override any white backgrounds in dark mode */
+.theme-dark .mat-mdc-snack-bar-container {
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+}
+
+.theme-dark .mat-mdc-dialog-container {
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+}
+
+/* Scrollbar styling for dark theme */
+.theme-dark::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.theme-dark::-webkit-scrollbar-track {
+  background: var(--secondary-bg);
+}
+
+.theme-dark::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+.theme-dark::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}

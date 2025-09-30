@@ -6,6 +6,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatDividerModule } from '@angular/material/divider';
 import { FormsModule } from '@angular/forms';
 import { LanguageService, Language, LocationOption } from '../../../services/language.service';
+import { ThemeService } from '../../../services/theme.service';
 
 @Component({
   selector: 'app-header',
@@ -42,8 +43,10 @@ export class HeaderComponent implements OnInit {
   showLanguageMenu = signal(false);
   showNotificationMenu = signal(false);
   showProfileMenu = signal(false);
+  showThemeMenu = signal(false);
 
   public languageService = inject(LanguageService);
+  public themeService = inject(ThemeService);
 
   ngOnInit() {
     this.languageService.initializeLanguage();
@@ -107,6 +110,7 @@ export class HeaderComponent implements OnInit {
     this.showLanguageMenu.set(false);
     this.showNotificationMenu.set(false);
     this.showProfileMenu.set(false);
+    this.showThemeMenu.set(false);
   }
 
   clearSearch() {
@@ -128,6 +132,7 @@ export class HeaderComponent implements OnInit {
     this.showLocationMenu.set(false);
     this.showNotificationMenu.set(false);
     this.showProfileMenu.set(false);
+    this.showThemeMenu.set(false);
   }
 
   onLanguageSelect(language: Language) {
@@ -142,6 +147,7 @@ export class HeaderComponent implements OnInit {
     this.showLocationMenu.set(false);
     this.showLanguageMenu.set(false);
     this.showProfileMenu.set(false);
+    this.showThemeMenu.set(false);
   }
 
   onProfileMenuClick() {
@@ -150,6 +156,7 @@ export class HeaderComponent implements OnInit {
     this.showLocationMenu.set(false);
     this.showLanguageMenu.set(false);
     this.showNotificationMenu.set(false);
+    this.showThemeMenu.set(false);
   }
 
   getSearchPlaceholder(): string {
@@ -169,6 +176,28 @@ export class HeaderComponent implements OnInit {
       .slice(0, 2);
   }
 
+  onThemeMenuClick() {
+    this.showThemeMenu.set(!this.showThemeMenu());
+    // Close other menus
+    this.showLocationMenu.set(false);
+    this.showLanguageMenu.set(false);
+    this.showNotificationMenu.set(false);
+    this.showProfileMenu.set(false);
+  }
+
+  onThemeSelect(mode: 'light' | 'dark' | 'auto') {
+    this.themeService.setThemeMode(mode);
+    this.showThemeMenu.set(false);
+  }
+
+  getThemeIcon(): string {
+    return this.themeService.getThemeIcon();
+  }
+
+  getThemeLabel(): string {
+    return this.themeService.getThemeLabel();
+  }
+
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: Event) {
     const target = event.target as HTMLElement;
@@ -183,10 +212,12 @@ export class HeaderComponent implements OnInit {
              !target.closest('.language-button') &&
              !target.closest('.notification-button') &&
              !target.closest('.profile-button') &&
+             !target.closest('.theme-button') &&
              !target.closest('.location-menu') &&
              !target.closest('.language-menu') &&
              !target.closest('.notification-menu') &&
-             !target.closest('.profile-menu')) {
+             !target.closest('.profile-menu') &&
+             !target.closest('.theme-menu')) {
       this.closeAllDropdowns();
     }
   }
