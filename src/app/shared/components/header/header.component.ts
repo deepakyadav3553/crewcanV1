@@ -40,13 +40,9 @@ export class HeaderComponent implements OnInit {
   searchText = signal('');
   isSearchFocused = signal(false);
   showLocationMenu = signal(false);
-  showLanguageMenu = signal(false);
   showNotificationMenu = signal(false);
-  showProfileMenu = signal(false);
-  showThemeMenu = signal(false);
 
   public languageService = inject(LanguageService);
-  public themeService = inject(ThemeService);
 
   ngOnInit() {
     this.languageService.initializeLanguage();
@@ -55,9 +51,7 @@ export class HeaderComponent implements OnInit {
   onLocationClick() {
     this.showLocationMenu.set(!this.showLocationMenu());
     // Close other menus
-    this.showLanguageMenu.set(false);
     this.showNotificationMenu.set(false);
-    this.showProfileMenu.set(false);
   }
 
   onLocationSelect(location: LocationOption) {
@@ -107,10 +101,7 @@ export class HeaderComponent implements OnInit {
 
   closeAllDropdowns() {
     this.showLocationMenu.set(false);
-    this.showLanguageMenu.set(false);
     this.showNotificationMenu.set(false);
-    this.showProfileMenu.set(false);
-    this.showThemeMenu.set(false);
   }
 
   clearSearch() {
@@ -126,37 +117,10 @@ export class HeaderComponent implements OnInit {
     this.notificationClick.emit();
   }
 
-  onLanguageMenuClick() {
-    this.showLanguageMenu.set(!this.showLanguageMenu());
-    // Close other menus
-    this.showLocationMenu.set(false);
-    this.showNotificationMenu.set(false);
-    this.showProfileMenu.set(false);
-    this.showThemeMenu.set(false);
-  }
-
-  onLanguageSelect(language: Language) {
-    this.languageService.setLanguage(language.code);
-    this.languageChange.emit(language);
-    this.showLanguageMenu.set(false);
-  }
-
   onNotificationMenuClick() {
     this.showNotificationMenu.set(!this.showNotificationMenu());
     // Close other menus
     this.showLocationMenu.set(false);
-    this.showLanguageMenu.set(false);
-    this.showProfileMenu.set(false);
-    this.showThemeMenu.set(false);
-  }
-
-  onProfileMenuClick() {
-    this.showProfileMenu.set(!this.showProfileMenu());
-    // Close other menus
-    this.showLocationMenu.set(false);
-    this.showLanguageMenu.set(false);
-    this.showNotificationMenu.set(false);
-    this.showThemeMenu.set(false);
   }
 
   getSearchPlaceholder(): string {
@@ -165,37 +129,6 @@ export class HeaderComponent implements OnInit {
 
   getLocationLabel(): string {
     return this.languageService.translate('location.select');
-  }
-
-  getInitials(name: string): string {
-    return name
-      .split(' ')
-      .map(word => word.charAt(0))
-      .join('')
-      .toUpperCase()
-      .slice(0, 2);
-  }
-
-  onThemeMenuClick() {
-    this.showThemeMenu.set(!this.showThemeMenu());
-    // Close other menus
-    this.showLocationMenu.set(false);
-    this.showLanguageMenu.set(false);
-    this.showNotificationMenu.set(false);
-    this.showProfileMenu.set(false);
-  }
-
-  onThemeSelect(mode: 'light' | 'dark' | 'auto') {
-    this.themeService.setThemeMode(mode);
-    this.showThemeMenu.set(false);
-  }
-
-  getThemeIcon(): string {
-    return this.themeService.getThemeIcon();
-  }
-
-  getThemeLabel(): string {
-    return this.themeService.getThemeLabel();
   }
 
   @HostListener('document:click', ['$event'])
@@ -209,15 +142,9 @@ export class HeaderComponent implements OnInit {
     }
     // If click is inside header but not on a dropdown or button, close dropdowns
     else if (!target.closest('.location-section') &&
-             !target.closest('.language-button') &&
              !target.closest('.notification-button') &&
-             !target.closest('.profile-button') &&
-             !target.closest('.theme-button') &&
              !target.closest('.location-menu') &&
-             !target.closest('.language-menu') &&
-             !target.closest('.notification-menu') &&
-             !target.closest('.profile-menu') &&
-             !target.closest('.theme-menu')) {
+             !target.closest('.notification-menu')) {
       this.closeAllDropdowns();
     }
   }

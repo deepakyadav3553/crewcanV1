@@ -49,90 +49,9 @@
       }
     </div>
 
-    <!-- Right: Language, Notifications & Profile -->
+    <!-- Right: Notifications & Profile -->
     @if (showProfile) {
       <div class="header-right">
-        <!-- Theme Toggle -->
-        <button
-          class="theme-button"
-          (click)="onThemeMenuClick()">
-          <span class="theme-icon">{{ getThemeIcon() }}</span>
-
-          <!-- Theme Dropdown Menu -->
-          @if (showThemeMenu()) {
-            <div class="theme-menu" (click)="$event.stopPropagation()">
-              <div class="theme-menu-header">
-                <mat-icon>brightness_6</mat-icon>
-                <span>Theme</span>
-              </div>
-              <div class="theme-menu-item"
-                   (click)="onThemeSelect('light')"
-                   [class.active]="themeService.themeMode() === 'light'">
-                <span class="theme-icon">☀️</span>
-                <div class="theme-info">
-                  <span class="theme-name">Light Mode</span>
-                </div>
-                @if (themeService.themeMode() === 'light') {
-                  <mat-icon class="check-icon">check</mat-icon>
-                }
-              </div>
-              <div class="theme-menu-item"
-                   (click)="onThemeSelect('dark')"
-                   [class.active]="themeService.themeMode() === 'dark'">
-                <span class="theme-icon">🌙</span>
-                <div class="theme-info">
-                  <span class="theme-name">Dark Mode</span>
-                </div>
-                @if (themeService.themeMode() === 'dark') {
-                  <mat-icon class="check-icon">check</mat-icon>
-                }
-              </div>
-              <div class="theme-menu-item"
-                   (click)="onThemeSelect('auto')"
-                   [class.active]="themeService.themeMode() === 'auto'">
-                <span class="theme-icon">🌗</span>
-                <div class="theme-info">
-                  <span class="theme-name">{{ getThemeLabel() }}</span>
-                </div>
-                @if (themeService.themeMode() === 'auto') {
-                  <mat-icon class="check-icon">check</mat-icon>
-                }
-              </div>
-            </div>
-          }
-        </button>
-
-        <!-- Language Selector -->
-        <button
-          class="language-button"
-          (click)="onLanguageMenuClick()">
-          <span class="language-flag">{{ languageService.getCurrentLanguage()().flag }}</span>
-
-          <!-- Language Dropdown Menu -->
-          @if (showLanguageMenu()) {
-            <div class="language-menu" (click)="$event.stopPropagation()">
-              <div class="language-menu-header">
-                <mat-icon>translate</mat-icon>
-                <span>{{ languageService.translate('language.change') }}</span>
-              </div>
-              @for (language of languageService.getAvailableLanguages(); track language.code) {
-                <div class="language-menu-item"
-                     (click)="onLanguageSelect(language)"
-                     [class.active]="languageService.getCurrentLanguage()().code === language.code">
-                  <span class="language-flag">{{ language.flag }}</span>
-                  <div class="language-info">
-                    <span class="language-name">{{ language.name }}</span>
-                    <span class="language-native">{{ language.nativeName }}</span>
-                  </div>
-                  @if (languageService.getCurrentLanguage()().code === language.code) {
-                    <mat-icon class="check-icon">check</mat-icon>
-                  }
-                </div>
-              }
-            </div>
-          }
-        </button>
-
         <!-- Notifications -->
         <button
           class="notification-button"
@@ -153,66 +72,6 @@
               <div class="no-notifications">
                 <mat-icon>notifications_off</mat-icon>
                 <span>No new notifications</span>
-              </div>
-            </div>
-          }
-        </button>
-
-        <button
-          class="profile-button"
-          (click)="onProfileMenuClick()">
-          @if (userAvatar) {
-            <img [src]="userAvatar" [alt]="userName" class="profile-avatar" />
-          } @else {
-            <div class="profile-avatar-placeholder">
-              {{ getInitials(userName) }}
-            </div>
-          }
-
-          <!-- Profile Dropdown Menu -->
-          @if (showProfileMenu()) {
-            <div class="profile-menu" (click)="$event.stopPropagation()">
-              <div class="profile-header">
-                <div class="profile-avatar-large">
-                  @if (userAvatar) {
-                    <img [src]="userAvatar" [alt]="userName" />
-                  } @else {
-                    {{ getInitials(userName) }}
-                  }
-                </div>
-                <div class="profile-details">
-                  <span class="profile-name">{{ userName }}</span>
-                  <span class="profile-subtitle">View Profile</span>
-                </div>
-              </div>
-              <div class="profile-menu-item" (click)="onProfileClick()">
-                <mat-icon>person</mat-icon>
-                <span>My Profile</span>
-              </div>
-              <div class="profile-menu-item">
-                <mat-icon>favorite</mat-icon>
-                <span>Favorites</span>
-              </div>
-              <div class="profile-menu-item">
-                <mat-icon>history</mat-icon>
-                <span>Order History</span>
-              </div>
-              <div class="profile-menu-item">
-                <mat-icon>payment</mat-icon>
-                <span>Payment Methods</span>
-              </div>
-              <div class="profile-menu-divider"></div>
-              <div class="profile-menu-item">
-                <mat-icon>settings</mat-icon>
-                <span>Settings</span>
-              </div>
-              <div class="profile-menu-item">
-                <mat-icon>help</mat-icon>
-                <span>Help & Support</span>
-              </div>
-              <div class="profile-menu-item">
-                <mat-icon>logout</mat-icon>
-                <span>Sign Out</span>
               </div>
             </div>
           }

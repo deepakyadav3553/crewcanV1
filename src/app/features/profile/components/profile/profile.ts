@@ -35,6 +35,10 @@ export class Profile implements OnInit {
   userName = this.getCurrentUser()?.mobileNumber || 'User';
   notificationCount = 3;
 
+  // Theme and Language menu state
+  showThemeMenu = false;
+  showLanguageMenu = false;
+
   // Bottom Navigation configuration
   activeNavItem = 'profile';
   navigationItems: NavigationItem[] = [
@@ -107,6 +111,39 @@ export class Profile implements OnInit {
 
   onLanguageChange(language: Language) {
     console.log('Language changed:', language);
+  }
+
+  // Theme and Language menu handlers
+  toggleThemeMenu() {
+    this.showThemeMenu = !this.showThemeMenu;
+    if (this.showThemeMenu) {
+      this.showLanguageMenu = false;
+    }
+  }
+
+  toggleLanguageMenu() {
+    this.showLanguageMenu = !this.showLanguageMenu;
+    if (this.showLanguageMenu) {
+      this.showThemeMenu = false;
+    }
+  }
+
+  onThemeSelect(mode: 'light' | 'dark' | 'auto') {
+    this.themeService.setThemeMode(mode);
+    this.showThemeMenu = false;
+  }
+
+  onLanguageSelect(language: Language) {
+    this.languageService.setLanguage(language.code);
+    this.showLanguageMenu = false;
+  }
+
+  getThemeIcon(): string {
+    return this.themeService.getThemeIcon();
+  }
+
+  getThemeLabel(): string {
+    return this.themeService.getThemeLabel();
   }
 
   // Bottom Navigation event handlers

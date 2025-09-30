@@ -18,62 +18,258 @@
   <div class="content">
     <!-- Profile Header -->
     <div class="profile-header">
-      <div class="profile-avatar">
-        <mat-icon>person</mat-icon>
+      <!-- Avatar -->
+      <div class="avatar-container">
+        <div class="avatar">
+          <mat-icon>person</mat-icon>
+        </div>
+        <button class="edit-avatar-btn">
+          <mat-icon>photo_camera</mat-icon>
+        </button>
       </div>
-      <h2 class="profile-name">{{ userName }}</h2>
-      <p class="profile-location">{{ userLocation }}</p>
+
+      <!-- User Info -->
+      <h1 class="user-name">{{ userName }}</h1>
+      <div class="user-location">
+        <mat-icon>location_on</mat-icon>
+        <span>{{ userLocation }}</span>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-row">
+        <div class="stat-item">
+          <div class="stat-number">24</div>
+          <div class="stat-label">Orders</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-number">12</div>
+          <div class="stat-label">Favorites</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-number">3.2k</div>
+          <div class="stat-label">Points</div>
+        </div>
+      </div>
     </div>
 
-    <!-- Profile Menu Items -->
-    <div class="profile-menu">
-      <div class="menu-item">
-        <mat-icon>person</mat-icon>
-        <span>Personal Information</span>
-        <mat-icon class="arrow">chevron_right</mat-icon>
+    <!-- Account Section -->
+    <div class="menu-section">
+      <div class="section-header">
+        <h3 class="section-title">Account</h3>
       </div>
+      <div class="menu-card">
+        <div class="menu-item">
+          <div class="menu-item-icon">
+            <mat-icon>person</mat-icon>
+          </div>
+          <div class="menu-item-content">
+            <span class="menu-item-title">Personal Information</span>
+            <span class="menu-item-subtitle">Name, email, phone</span>
+          </div>
+          <mat-icon class="arrow">chevron_right</mat-icon>
+        </div>
 
-      <div class="menu-item">
-        <mat-icon>location_on</mat-icon>
-        <span>My Addresses</span>
-        <mat-icon class="arrow">chevron_right</mat-icon>
+        <div class="menu-divider"></div>
+
+        <div class="menu-item">
+          <div class="menu-item-icon">
+            <mat-icon>location_on</mat-icon>
+          </div>
+          <div class="menu-item-content">
+            <span class="menu-item-title">My Addresses</span>
+            <span class="menu-item-subtitle">Manage delivery addresses</span>
+          </div>
+          <mat-icon class="arrow">chevron_right</mat-icon>
+        </div>
+
+        <div class="menu-divider"></div>
+
+        <div class="menu-item">
+          <div class="menu-item-icon">
+            <mat-icon>payment</mat-icon>
+          </div>
+          <div class="menu-item-content">
+            <span class="menu-item-title">Payment Methods</span>
+            <span class="menu-item-subtitle">Cards & payment options</span>
+          </div>
+          <mat-icon class="arrow">chevron_right</mat-icon>
+        </div>
       </div>
+    </div>
 
-      <div class="menu-item">
-        <mat-icon>receipt_long</mat-icon>
-        <span>Order History</span>
-        <mat-icon class="arrow">chevron_right</mat-icon>
+    <!-- Preferences Section -->
+    <div class="menu-section">
+      <div class="section-header">
+        <h3 class="section-title">Preferences</h3>
       </div>
+      <div class="menu-card">
+        <!-- Theme Selection -->
+        <div class="menu-item" (click)="toggleThemeMenu()">
+          <div class="menu-item-icon">
+            <mat-icon>brightness_6</mat-icon>
+          </div>
+          <div class="menu-item-content">
+            <span class="menu-item-title">Theme</span>
+            <span class="menu-item-subtitle">{{ getThemeLabel() }}</span>
+          </div>
+          <div class="menu-item-value">
+            <span class="theme-icon">{{ getThemeIcon() }}</span>
+          </div>
+          <mat-icon class="arrow">chevron_right</mat-icon>
+        </div>
 
-      <div class="menu-item">
-        <mat-icon>favorite</mat-icon>
-        <span>Favorites</span>
-        <mat-icon class="arrow">chevron_right</mat-icon>
+        @if (showThemeMenu) {
+          <div class="submenu">
+            <div class="submenu-item"
+                 (click)="onThemeSelect('light')"
+                 [class.active]="themeService.themeMode() === 'light'">
+              <span class="theme-icon">☀️</span>
+              <span>Light Mode</span>
+              @if (themeService.themeMode() === 'light') {
+                <mat-icon class="check-icon">check</mat-icon>
+              }
+            </div>
+            <div class="submenu-item"
+                 (click)="onThemeSelect('dark')"
+                 [class.active]="themeService.themeMode() === 'dark'">
+              <span class="theme-icon">🌙</span>
+              <span>Dark Mode</span>
+              @if (themeService.themeMode() === 'dark') {
+                <mat-icon class="check-icon">check</mat-icon>
+              }
+            </div>
+            <div class="submenu-item"
+                 (click)="onThemeSelect('auto')"
+                 [class.active]="themeService.themeMode() === 'auto'">
+              <span class="theme-icon">🌗</span>
+              <span>Auto (System)</span>
+              @if (themeService.themeMode() === 'auto') {
+                <mat-icon class="check-icon">check</mat-icon>
+              }
+            </div>
+          </div>
+        }
+
+        <div class="menu-divider"></div>
+
+        <!-- Language Selection -->
+        <div class="menu-item" (click)="toggleLanguageMenu()">
+          <div class="menu-item-icon">
+            <mat-icon>translate</mat-icon>
+          </div>
+          <div class="menu-item-content">
+            <span class="menu-item-title">{{ languageService.translate('language.change') }}</span>
+            <span class="menu-item-subtitle">{{ languageService.getCurrentLanguage()().name }}</span>
+          </div>
+          <div class="menu-item-value">
+            <span class="language-flag">{{ languageService.getCurrentLanguage()().flag }}</span>
+          </div>
+          <mat-icon class="arrow">chevron_right</mat-icon>
+        </div>
+
+        @if (showLanguageMenu) {
+          <div class="submenu">
+            @for (language of languageService.getAvailableLanguages(); track language.code) {
+              <div class="submenu-item"
+                   (click)="onLanguageSelect(language)"
+                   [class.active]="languageService.getCurrentLanguage()().code === language.code">
+                <span class="language-flag">{{ language.flag }}</span>
+                <div class="language-info">
+                  <span class="language-name">{{ language.name }}</span>
+                  <span class="language-native">{{ language.nativeName }}</span>
+                </div>
+                @if (languageService.getCurrentLanguage()().code === language.code) {
+                  <mat-icon class="check-icon">check</mat-icon>
+                }
+              </div>
+            }
+          </div>
+        }
+
+        <div class="menu-divider"></div>
+
+        <div class="menu-item">
+          <div class="menu-item-icon">
+            <mat-icon>notifications</mat-icon>
+          </div>
+          <div class="menu-item-content">
+            <span class="menu-item-title">Notifications</span>
+            <span class="menu-item-subtitle">Manage alerts & sounds</span>
+          </div>
+          <mat-icon class="arrow">chevron_right</mat-icon>
+        </div>
       </div>
+    </div>
 
-      <div class="menu-item">
-        <mat-icon>notifications</mat-icon>
-        <span>Notifications</span>
-        <mat-icon class="arrow">chevron_right</mat-icon>
+    <!-- More Section -->
+    <div class="menu-section">
+      <div class="section-header">
+        <h3 class="section-title">More</h3>
       </div>
+      <div class="menu-card">
+        <div class="menu-item">
+          <div class="menu-item-icon">
+            <mat-icon>privacy_tip</mat-icon>
+          </div>
+          <div class="menu-item-content">
+            <span class="menu-item-title">Privacy Policy</span>
+          </div>
+          <mat-icon class="arrow">chevron_right</mat-icon>
+        </div>
 
-      <div class="menu-item">
-        <mat-icon>settings</mat-icon>
-        <span>Settings</span>
-        <mat-icon class="arrow">chevron_right</mat-icon>
+        <div class="menu-divider"></div>
+
+        <div class="menu-item">
+          <div class="menu-item-icon">
+            <mat-icon>description</mat-icon>
+          </div>
+          <div class="menu-item-content">
+            <span class="menu-item-title">Terms & Conditions</span>
+          </div>
+          <mat-icon class="arrow">chevron_right</mat-icon>
+        </div>
+
+        <div class="menu-divider"></div>
+
+        <div class="menu-item">
+          <div class="menu-item-icon">
+            <mat-icon>help</mat-icon>
+          </div>
+          <div class="menu-item-content">
+            <span class="menu-item-title">Help & Support</span>
+          </div>
+          <mat-icon class="arrow">chevron_right</mat-icon>
+        </div>
+
+        <div class="menu-divider"></div>
+
+        <div class="menu-item">
+          <div class="menu-item-icon">
+            <mat-icon>info</mat-icon>
+          </div>
+          <div class="menu-item-content">
+            <span class="menu-item-title">About</span>
+            <span class="menu-item-subtitle">Version 1.0.0</span>
+          </div>
+          <mat-icon class="arrow">chevron_right</mat-icon>
+        </div>
       </div>
+    </div>
 
-      <div class="menu-item">
-        <mat-icon>help</mat-icon>
-        <span>Help & Support</span>
-        <mat-icon class="arrow">chevron_right</mat-icon>
-      </div>
-
-      <div class="menu-item logout" (click)="onLogout()">
+    <!-- Logout Button -->
+    <div class="logout-section">
+      <button class="logout-button" (click)="onLogout()">
         <mat-icon>logout</mat-icon>
         <span>Logout</span>
-        <mat-icon class="arrow">chevron_right</mat-icon>
-      </div>
+      </button>
+    </div>
+
+    <!-- App Version -->
+    <div class="app-version">
+      <p>CrewCan v1.0.0</p>
+      <p>Made with ❤️</p>
     </div>
   </div>
 
