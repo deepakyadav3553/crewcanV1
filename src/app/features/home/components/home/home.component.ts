@@ -136,7 +136,8 @@ export class HomeComponent implements OnInit {
       id: 'profile',
       label: 'Profile',
       icon: 'person_outline',
-      iconFilled: 'person'
+      iconFilled: 'person',
+      route: '/profile'
     }
   ];
 
@@ -259,10 +260,6 @@ export class HomeComponent implements OnInit {
         break;
       case 'favorites':
         // Navigate to favorites page
-        break;
-      case 'profile':
-        // Navigate to profile page or trigger profile click from header
-        this.onProfileClick();
         break;
     }
   }

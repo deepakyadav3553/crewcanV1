@@ -1,0 +1,87 @@
+<div class="profile-container">
+  <!-- Bubble Background -->
+  <app-bubble-background density="medium" color="blue" speed="normal"></app-bubble-background>
+
+  <!-- Modern Header -->
+  <app-header
+    [userLocation]="userLocation"
+    [userName]="userName"
+    [notificationCount]="notificationCount"
+    (locationSelect)="onLocationSelect($event)"
+    (searchQuery)="onSearchQuery($event)"
+    (profileClick)="onProfileClick()"
+    (notificationClick)="onNotificationClick()"
+    (languageChange)="onLanguageChange($event)">
+  </app-header>
+
+  <!-- Content -->
+  <div class="content">
+    <!-- Profile Header -->
+    <div class="profile-header">
+      <div class="profile-avatar">
+        <mat-icon>person</mat-icon>
+      </div>
+      <h2 class="profile-name">{{ userName }}</h2>
+      <p class="profile-location">{{ userLocation }}</p>
+    </div>
+
+    <!-- Profile Menu Items -->
+    <div class="profile-menu">
+      <div class="menu-item">
+        <mat-icon>person</mat-icon>
+        <span>Personal Information</span>
+        <mat-icon class="arrow">chevron_right</mat-icon>
+      </div>
+
+      <div class="menu-item">
+        <mat-icon>location_on</mat-icon>
+        <span>My Addresses</span>
+        <mat-icon class="arrow">chevron_right</mat-icon>
+      </div>
+
+      <div class="menu-item">
+        <mat-icon>receipt_long</mat-icon>
+        <span>Order History</span>
+        <mat-icon class="arrow">chevron_right</mat-icon>
+      </div>
+
+      <div class="menu-item">
+        <mat-icon>favorite</mat-icon>
+        <span>Favorites</span>
+        <mat-icon class="arrow">chevron_right</mat-icon>
+      </div>
+
+      <div class="menu-item">
+        <mat-icon>notifications</mat-icon>
+        <span>Notifications</span>
+        <mat-icon class="arrow">chevron_right</mat-icon>
+      </div>
+
+      <div class="menu-item">
+        <mat-icon>settings</mat-icon>
+        <span>Settings</span>
+        <mat-icon class="arrow">chevron_right</mat-icon>
+      </div>
+
+      <div class="menu-item">
+        <mat-icon>help</mat-icon>
+        <span>Help & Support</span>
+        <mat-icon class="arrow">chevron_right</mat-icon>
+      </div>
+
+      <div class="menu-item logout" (click)="onLogout()">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+        <mat-icon class="arrow">chevron_right</mat-icon>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <app-bottom-navigation
+    [items]="navigationItems"
+    [activeItemId]="activeNavItem"
+    (itemClick)="onNavigationItemClick($event)"
+    (activeItemChange)="onActiveNavItemChange($event)">
+  </app-bottom-navigation>
+</div>

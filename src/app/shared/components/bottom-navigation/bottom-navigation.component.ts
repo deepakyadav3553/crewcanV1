@@ -60,7 +60,8 @@ export class BottomNavigationComponent {
       id: 'profile',
       label: 'Profile',
       icon: 'person_outline',
-      iconFilled: 'person'
+      iconFilled: 'person',
+      route: '/profile'
     }
   ];
 
